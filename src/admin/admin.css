@@ -208,7 +208,7 @@
 .adm .chip[aria-pressed='true'] small {
   color: var(--lavanda);
 }
-.adm .chip--white {
+.adm .chip--white:not([aria-pressed='true']) {
   background: var(--blanco);
 }
 .adm-icon-btn {
@@ -362,7 +362,7 @@
 }
 .adm-row__who {
   flex: none;
-  width: 240px;
+  width: 200px;
   min-width: 0;
 }
 .adm-row__who strong {
@@ -375,7 +375,7 @@
 }
 .adm-row__state {
   flex: none;
-  width: 160px;
+  width: 150px;
 }
 .adm-row__total {
   flex: none;
@@ -1128,6 +1128,107 @@
   padding: 32px 24px;
 }
 
+/* Tablet y notebook chica: las filas pasan a tarjetas y el editor a una columna; el menú lateral sigue. */
+@media (max-width: 1279px) {
+  .adm-page {
+    padding-inline: 32px;
+  }
+  .adm-week__meta {
+    flex-wrap: wrap;
+  }
+  .adm-editor {
+    grid-template-columns: 1fr;
+  }
+  .adm-editor__preview {
+    position: static;
+    max-width: 300px;
+  }
+  .adm-list {
+    gap: 10px;
+    padding: 0;
+    background: none;
+  }
+  .adm-row,
+  .adm-stock .adm-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: var(--gris-panel);
+  }
+  .adm-row--free {
+    background: none;
+  }
+  .adm-stock .adm-row--head {
+    display: none;
+  }
+  .adm-row > * {
+    width: auto !important;
+  }
+  .adm-row__time {
+    order: 0;
+  }
+  .adm-row__state {
+    order: 1;
+    margin-left: auto;
+  }
+  .adm-row__who,
+  .adm-row__main {
+    flex-basis: 100% !important;
+    order: 2;
+  }
+  .adm-row__main {
+    order: 3;
+  }
+  .adm-row__pay {
+    order: 4;
+  }
+  .adm-row__total {
+    order: 5;
+    margin-left: auto;
+  }
+  .adm-row__actions {
+    flex-basis: 100% !important;
+    order: 6;
+    justify-content: stretch;
+    gap: 8px;
+  }
+  .adm-row__actions {
+    flex-wrap: wrap;
+  }
+  .adm-row__actions .btn {
+    flex: 1 1 auto;
+    background: var(--blanco);
+  }
+  .adm-row__actions .btn--soft {
+    background: var(--lavanda);
+  }
+  .adm-row--free .btn {
+    margin-left: auto;
+  }
+  .adm-stock .adm-row > :nth-child(3),
+  .adm-stock .adm-row > :nth-child(4),
+  .adm-stock .adm-stock__n {
+    display: none;
+  }
+  .adm-stock .adm-row {
+    align-items: center;
+  }
+  .adm-stock .adm-row__who {
+    flex: 1 1 calc(100% - 60px) !important;
+    order: 0;
+  }
+  .adm-stock .adm-row__actions {
+    flex-basis: auto !important;
+    order: 1;
+  }
+  .adm-stock .adm-row > :nth-child(5) {
+    order: 2;
+    flex-basis: 100%;
+  }
+}
+
 /* Celular: el menú pasa a una barra fija abajo y los paneles suben desde abajo. */
 @media (max-width: 760px) {
   .adm {
@@ -1220,87 +1321,6 @@
   }
   .adm-week__meta {
     display: none;
-  }
-  .adm-list {
-    gap: 10px;
-    padding: 0;
-    background: none;
-  }
-  .adm-row,
-  .adm-stock .adm-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 12px;
-    padding: 14px;
-    border-radius: 12px;
-    background: var(--gris-panel);
-  }
-  .adm-row--free {
-    background: none;
-  }
-  .adm-stock .adm-row--head {
-    display: none;
-  }
-  .adm-row > * {
-    width: auto !important;
-  }
-  .adm-row__time {
-    order: 0;
-  }
-  .adm-row__state {
-    order: 1;
-    margin-left: auto;
-  }
-  .adm-row__who,
-  .adm-row__main {
-    flex-basis: 100% !important;
-    order: 2;
-  }
-  .adm-row__main {
-    order: 3;
-  }
-  .adm-row__pay {
-    order: 4;
-  }
-  .adm-row__total {
-    order: 5;
-    margin-left: auto;
-  }
-  .adm-row__actions {
-    flex-basis: 100% !important;
-    order: 6;
-    justify-content: stretch;
-    gap: 8px;
-  }
-  .adm-row__actions .btn {
-    flex: 1;
-    background: var(--blanco);
-  }
-  .adm-row__actions .btn--soft {
-    background: var(--lavanda);
-  }
-  .adm-row--free .btn {
-    margin-left: auto;
-  }
-  .adm-stock .adm-row > :nth-child(3),
-  .adm-stock .adm-row > :nth-child(4),
-  .adm-stock .adm-stock__n {
-    display: none;
-  }
-  .adm-stock .adm-row {
-    align-items: center;
-  }
-  .adm-stock .adm-row__who {
-    flex: 1 1 calc(100% - 60px) !important;
-    order: 0;
-  }
-  .adm-stock .adm-row__actions {
-    flex-basis: auto !important;
-    order: 1;
-  }
-  .adm-stock .adm-row > :nth-child(5) {
-    order: 2;
-    flex-basis: 100%;
   }
   .adm-dialog--drawer,
   .adm-dialog--modal {
