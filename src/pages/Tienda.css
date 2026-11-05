@@ -1,0 +1,236 @@
+/* Página "Tienda": frames "Desktop — Tienda" (1440) y "Celular — Tienda" (390). */
+
+/* ---------- Foto de cabecera con el título en blanco ---------- */
+
+.shop-hero {
+  position: relative;
+  aspect-ratio: 1440 / 600;
+  overflow: hidden;
+}
+
+@media (min-width: 761px) {
+  .shop-hero {
+    margin-top: -41px; /* la barra superior va encima de la foto */
+  }
+}
+
+.shop-hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18.7%;
+}
+
+.shop-hero__title {
+  position: absolute;
+  z-index: 1;
+  left: clamp(24px, 3.3vw, 47px);
+  bottom: 63px;
+  font-size: clamp(34px, 28.4px + 1.43vw, 48px);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--blanco);
+}
+
+.shop-hero__title .script {
+  font-size: clamp(76px, 54.7px + 5.33vw, 130px);
+  letter-spacing: 0;
+}
+
+/* ---------- Título, filtros y orden ---------- */
+
+.shop {
+  padding-top: 64px;
+}
+
+@media (min-width: 1101px) {
+  .shop {
+    padding-inline: 58px 57px;
+    margin-bottom: -62px; /* en Figma el footer arranca a 64 de la última fila */
+  }
+}
+
+.shop__title {
+  font-size: var(--fs-seccion);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.shop__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid #dcdce8;
+}
+
+.shop__order {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.shop__count,
+.shop__sort {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.shop__sort {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 16px 0 20px;
+  border: 1px solid var(--tinta);
+  border-radius: var(--pill);
+}
+
+.shop__sort select {
+  padding-right: 20px;
+  border: 0;
+  background: none;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  appearance: none;
+  cursor: pointer;
+}
+
+.shop__sort svg {
+  position: absolute;
+  right: 16px;
+  pointer-events: none;
+}
+
+.shop__grid {
+  margin-top: 41px;
+  gap: 22px;
+}
+
+.shop__grid .product-card {
+  order: var(--order);
+}
+
+.shop__grid .not-sure {
+  order: 9;
+}
+
+.shop__empty {
+  margin-top: 41px;
+  color: var(--texto);
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1100px) {
+  .shop__bar {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 760px) {
+  .shop-hero {
+    margin-top: -20px;
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+
+  .shop-hero img {
+    position: static;
+    aspect-ratio: 390 / 300;
+    object-position: 50% 50%;
+  }
+
+  /* El título pasa debajo de la foto, en tinta. */
+  .shop-hero__title {
+    position: static;
+    padding: 57px 24px 24px;
+    font-size: 34px;
+    line-height: 27px;
+    color: var(--tinta);
+  }
+
+  .shop-hero__title .script {
+    font-size: 76px;
+    line-height: 61px;
+    color: var(--tinta);
+  }
+
+  .shop {
+    padding-top: 16px;
+  }
+
+  .shop__title {
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .shop__bar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 0;
+    border: 0;
+  }
+
+  .shop__order {
+    justify-content: space-between;
+  }
+
+  .shop__count,
+  .shop__sort {
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .shop__count {
+    color: var(--texto);
+  }
+
+  .shop__sort {
+    gap: 4px;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .shop__sort svg {
+    right: 0;
+  }
+
+  .shop__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 24px -8px 0;
+    padding-bottom: 56px;
+  }
+
+  .shop__grid .product-card {
+    order: var(--order-m);
+  }
+
+  .shop__grid .not-sure {
+    order: 7;
+  }
+}

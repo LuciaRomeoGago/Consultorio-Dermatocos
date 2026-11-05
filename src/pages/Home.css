@@ -1,0 +1,569 @@
+/* Medidas tomadas del frame "Desktop — Home" (1440) y "Celular — Home" (390) de Figma. */
+
+/* ---------- Foto de cabecera (1440 × 599 · 390 × 182) ---------- */
+
+.home-hero img {
+  width: 100%;
+  aspect-ratio: 1440 / 599;
+  object-fit: cover;
+  object-position: 50% 100%; /* en Figma se ve el tercio de abajo de la foto */
+  transform: scaleX(-1); /* en Figma la foto está espejada */
+}
+
+/* En escritorio la barra superior va encima de la foto. */
+@media (min-width: 861px) {
+  .home-hero {
+    margin-top: -41px;
+  }
+}
+
+/* ---------- Frase principal ---------- */
+
+.home-quote {
+  max-width: 962px;
+  margin-inline: auto;
+  padding: 34px 24px 73px;
+}
+
+.home-quote .script {
+  line-height: 1;
+}
+
+@media (min-width: 1100px) {
+  .home-quote {
+    padding-inline: 263px 0;
+    max-width: none;
+    white-space: nowrap;
+    text-align: left;
+  }
+}
+
+/* ---------- Salud & piel: foto a la derecha que sobresale del bloque gris ---------- */
+
+.home-salud {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48.4%;
+  grid-template-rows: 152px minmax(min(680px, 47.3vw), auto);
+}
+
+.home-salud__img {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  z-index: 1;
+  width: 100%;
+  height: 0; /* que la foto no estire la grilla: llena el alto que da el bloque */
+  min-height: 100%;
+  object-fit: cover;
+  object-position: 54% 57%;
+}
+
+.home-salud__panel {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48.4%;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--gris-panel);
+}
+
+.home-salud__content {
+  align-self: end;
+  display: grid;
+  gap: 18px;
+  padding: 0 24px 53px clamp(24px, 6vw, 87px);
+}
+
+.home-salud__text {
+  max-width: 552px;
+  font-size: var(--fs-bajada);
+  line-height: 1.57;
+  color: var(--tinta);
+}
+
+.home-salud .actions {
+  margin-top: 49px;
+}
+
+/* ---------- Tratamientos a tu medida ---------- */
+
+.home-treatments {
+  padding-top: 136px;
+  padding-bottom: 105px;
+}
+
+/* "Ver todos" queda pegado debajo de "tratamientos a", dentro del alto de la manuscrita. */
+.home-treatments__all {
+  display: flex;
+  width: fit-content;
+  margin-top: -43px;
+}
+
+.home-treatments__row {
+  max-width: var(--max);
+  margin: 37px auto 0;
+}
+
+/* Se ven seis tarjetas (como en Figma); el resto aparece al deslizar. */
+.home-treatments__row .scroller {
+  margin-inline: 48px 56px;
+}
+
+/* ---------- Bloques con foto (enfoque y rutina) ---------- */
+
+.home-approach__title {
+  white-space: pre-line;
+}
+
+.home-approach__intro {
+  display: grid;
+  gap: 0;
+  max-width: 528px;
+  margin-top: 40px;
+}
+
+.home-approach__subtitle {
+  font-size: var(--fs-seccion);
+  font-weight: 500;
+  line-height: 1.79;
+  letter-spacing: var(--ls-titulo);
+  color: var(--tinta);
+}
+
+.home-approach__lead {
+  margin-top: -7px;
+}
+
+.home-approach__lead,
+.home-routine__subtitle {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: var(--ls-etiqueta);
+  line-height: 1.75;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.home-panel-accordion {
+  max-width: 640px;
+  margin-top: 12px;
+}
+
+.home-routine {
+  padding-bottom: 0;
+}
+
+.home-routine .t-section {
+  margin-bottom: 0;
+}
+
+.home-routine .panel-gallery__panel {
+  padding: 73px 24px 54px clamp(24px, 5.8vw, 83px);
+}
+
+.home-routine__head {
+  display: grid;
+  gap: 0;
+}
+
+.home-routine__head .home-routine__subtitle {
+  margin-top: -11px;
+}
+
+.home-routine__text {
+  max-width: 456px;
+  margin-top: 26px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--tinta);
+}
+
+.home-routine__buy {
+  display: grid;
+  gap: 36px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: -6px;
+}
+
+.home-routine__buy .accordion {
+  max-width: none;
+}
+
+/* ---------- Los más elegidos ---------- */
+
+.home-shop__bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px 32px;
+  margin: 12px 0 76px;
+}
+
+.home-shop {
+  padding-bottom: 0;
+}
+
+.home-shop__bar .btn--link {
+  margin-right: 78px;
+}
+
+.home-shop__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  padding-inline: 45px 70px;
+}
+
+/* ---------- vos + jazmín ---------- */
+
+.home-ig {
+  padding-top: 0;
+  padding-bottom: 31px;
+}
+
+/* "vos + jazmín": la manuscrita no agranda la línea (alto 68 como en Figma). */
+.home-ig .t-section .script {
+  line-height: 68px;
+}
+
+.home-ig__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 21px;
+}
+
+.home-ig__follow {
+  margin: 8px 59px 0 0;
+}
+
+/* Tres posts de 379 y el cuarto más angosto, recortado como en Figma. */
+.home-ig__posts {
+  display: flex;
+  gap: 19px;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: 10px 17px;
+}
+
+.home-ig__posts li {
+  flex: none;
+  width: 26.8%;
+}
+
+.home-ig__posts li:last-child {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.home-ig__posts li:last-child img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  aspect-ratio: auto;
+  object-position: 50% 84%;
+}
+
+.home-ig__posts img {
+  width: 100%;
+  aspect-ratio: 379 / 380;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: transform 0.5s var(--ease);
+}
+
+.home-ig__posts a:hover img {
+  transform: scale(1.02);
+}
+
+.home-ig__follow-mobile {
+  display: none;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1100px) {
+  .home-shop__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-inline: var(--gutter);
+  }
+  .home-shop__bar .btn--link,
+  .home-ig__follow {
+    margin-right: 0;
+  }
+}
+
+/* ---------- Celular (frame "Celular — Home", 390) ---------- */
+
+@media (max-width: 760px) {
+  /* La barra superior va encima de la foto, como en escritorio. */
+  .home-hero {
+    margin-top: -20px;
+  }
+
+  .home-hero img {
+    aspect-ratio: 390 / 182;
+    object-position: 50% 100%;
+    transform: none;
+  }
+
+  .home-quote {
+    padding: 48px 24px;
+    line-height: 35px;
+  }
+
+  .home-quote .script {
+    line-height: 35px;
+  }
+
+  /* Salud & piel: foto de 440 arriba y texto abajo. */
+  .home-salud {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+  }
+
+  .home-salud__img {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 390 / 440;
+    height: auto;
+    min-height: 0;
+    object-position: 50% 50%;
+  }
+
+  .home-salud__panel {
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: minmax(0, 1fr);
+    border-radius: 0;
+    background: none;
+  }
+
+  .home-salud__content {
+    gap: 16px;
+    padding: 32px 24px 48px;
+  }
+
+  .home-salud__text {
+    max-width: none;
+  }
+
+  .home-salud .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .home-salud .actions .btn--link {
+    align-self: center;
+    min-height: 32px;
+  }
+
+  /* Tratamientos: título en dos líneas, "Ver todos" y carrusel de 206. */
+  .home-treatments {
+    padding-block: 56px 36px;
+  }
+
+  /* En Figma la primera línea toma el alto de la manuscrita (61): 17 px de aire arriba. */
+  .home-treatments .t-section {
+    padding-top: 17px;
+  }
+
+  .home-treatments .t-section .script {
+    display: block;
+    margin-top: 1px;
+  }
+
+  .home-treatments__all {
+    min-height: 32px;
+    margin-top: 12px;
+  }
+
+  .home-treatments__row {
+    margin-top: 24px;
+  }
+
+  .home-treatments__row .scroller {
+    gap: 12px;
+    margin-inline: 0;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  /* Conocé mi enfoque */
+  .home-approach__title {
+    white-space: normal;
+  }
+
+  .home-approach__intro {
+    gap: 16px;
+    margin-top: 0;
+  }
+
+  .home-approach__subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+  }
+
+  .home-approach__lead {
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .home-panel-accordion {
+    max-width: none;
+    margin-top: 8px;
+  }
+
+  .home-block {
+    padding-bottom: 56px;
+  }
+
+  /* Los más elegidos */
+  .home-shop {
+    padding-bottom: 56px;
+  }
+
+  .home-shop__bar {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 12px 0 20px;
+  }
+
+  /* "Ir a la tienda" va debajo del título, antes de los filtros. */
+  .home-shop__bar .btn--link {
+    order: -1;
+    min-height: 32px;
+  }
+
+  .home-shop__bar .chips--scroll {
+    gap: 8px;
+    align-self: stretch;
+  }
+
+  .home-shop__grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+    padding-inline: 24px;
+  }
+
+  .home-shop__grid > * {
+    flex: none;
+    width: 290px;
+    scroll-snap-align: start;
+  }
+
+  /* En celular Figma muestra primero "lifting" y después "defensa". */
+  .home-shop__grid > .product-card:first-child {
+    order: 1;
+  }
+
+  .home-shop__grid > .not-sure {
+    order: 2;
+  }
+
+  /* Rutinas completas: título, foto de 420 y texto. */
+  .home-routine {
+    padding-bottom: 56px;
+  }
+
+  .home-routine .t-section {
+    margin-bottom: 24px;
+  }
+
+  .home-routine .panel-gallery__images {
+    aspect-ratio: 390 / 420;
+  }
+
+  .home-routine .panel-gallery__panel {
+    gap: 12px;
+    padding: 32px 24px 0;
+  }
+
+  .home-routine__head {
+    gap: 12px;
+  }
+
+  .home-routine__head .home-routine__subtitle {
+    margin-top: 0;
+  }
+
+  .home-routine__subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .home-routine__text {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .home-routine__buy {
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  .home-routine__buy .accordion {
+    margin-top: 12px;
+  }
+
+  /* vos + jazmín: posts 2 × 2 y botón a lo ancho. */
+  .home-ig {
+    padding: 53px 0 56px;
+  }
+
+  .home-ig__head {
+    margin-bottom: 20px;
+  }
+
+  .home-ig .t-section .script {
+    line-height: 0.8;
+  }
+
+  .home-ig__follow {
+    display: none;
+  }
+
+  .home-ig__posts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 8px;
+    padding-inline: 24px;
+  }
+
+  .home-ig__posts li {
+    width: auto;
+  }
+
+  .home-ig__posts img,
+  .home-ig__posts li:last-child img {
+    position: static;
+    aspect-ratio: 167 / 168;
+    border-radius: 6px;
+  }
+
+  .home-ig__follow-mobile {
+    display: block;
+    margin-top: 20px;
+  }
+}

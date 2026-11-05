@@ -1,0 +1,96 @@
+/* Tarjeta de 1410 × 751: panel de 784 y fotos de 626 (proporciones de Figma). */
+.panel-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: 55.6% 44.4%;
+  min-height: 751px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.panel-gallery__panel {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 20px;
+  padding: 54px 0 54px clamp(24px, 3.7vw, 53px);
+  /* Translúcido como en Figma: las fotos que pasan por detrás se ven apenas. */
+  background: rgb(233 234 237 / 0.75);
+}
+
+.panel-gallery__images {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  margin: 2px 0;
+  border-radius: var(--radius);
+}
+
+.panel-gallery__image {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  /* Smart Animate de Figma: 0,7 s. */
+  transition: transform 0.7s ease-in-out;
+}
+
+.panel-gallery__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Producto recortado sobre color: ocupa el 80 % de arriba a la izquierda, como en Figma. */
+.panel-gallery__image--product img {
+  object-fit: contain;
+}
+
+/* La siguiente espera a la izquierda, fuera de la tarjeta (x −626 en Figma), y entra por debajo del panel. */
+.panel-gallery__image[data-state='before'] {
+  transform: translateX(-225%);
+}
+
+.panel-gallery__image[data-state='active'] {
+  transform: none;
+  z-index: 1;
+}
+
+.panel-gallery__image[data-state='after'] {
+  transform: translateX(100%);
+}
+
+@media (max-width: 960px) {
+  .panel-gallery {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .panel-gallery__images {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 390 / 440;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0;
+  }
+
+  .panel-gallery__image {
+    border-radius: 0;
+  }
+
+  .panel-gallery__panel {
+    grid-column: 1;
+    grid-row: 2;
+    gap: 16px;
+    padding: 32px 24px 0;
+    background: none;
+  }
+}

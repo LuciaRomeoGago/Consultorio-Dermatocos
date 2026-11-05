@@ -1,0 +1,167 @@
+/* Tarjeta de 1410 × 803: fotos de 700 a la izquierda y panel de 710 a la derecha (gris al 75 %). */
+.steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: 49.65% minmax(0, 1fr);
+  min-height: 803px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.steps__images {
+  position: relative;
+}
+
+/* Las fotos siguientes esperan a la derecha, fuera de la tarjeta, y entran por debajo del panel. */
+.steps__images img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0;
+  transition: transform 0.5s ease-in-out; /* Smart Animate de Figma */
+}
+
+.steps__images img[data-state='before'] {
+  transform: translateX(-100%);
+}
+
+.steps__images img[data-state='after'] {
+  transform: translateX(203%);
+}
+
+.steps__images img[data-state='active'] {
+  transform: none;
+}
+
+.steps__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 72px 56px;
+  background: rgb(233 234 237 / 0.75);
+}
+
+.steps__text {
+  display: grid;
+  gap: 18px;
+  max-width: 566px;
+  animation: steps-in 0.5s ease-in-out;
+}
+
+@keyframes steps-in {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+}
+
+.steps__num {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--texto);
+}
+
+.steps__title {
+  font-size: clamp(30px, 22px + 1.5vw, 44px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.steps__desc {
+  font-size: clamp(15px, 13px + 0.35vw, 18px);
+  line-height: 1.56;
+  color: var(--tinta);
+}
+
+.steps__list {
+  margin-top: auto;
+  padding-top: 40px;
+  max-width: 566px;
+}
+
+.steps__step {
+  width: 100%;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--gris-medio);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 33px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+.steps__step:hover,
+.steps__step[aria-current='step'] {
+  color: var(--tinta);
+}
+
+.steps-m {
+  display: none;
+}
+
+/* ---------- Celular (Figma 390): tarjetas de 300 con foto de 360 ---------- */
+
+@media (max-width: 760px) {
+  .steps {
+    display: none;
+  }
+
+  .steps-m {
+    display: flex;
+    gap: 12px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .steps-m__card {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    width: 300px;
+  }
+
+  .steps-m__card img {
+    width: 100%;
+    aspect-ratio: 300 / 360;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .steps-m__label {
+    padding-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--texto);
+  }
+
+  .steps-m__label span {
+    margin-right: 4px;
+    color: var(--tinta);
+  }
+
+  .steps-m__title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+    color: var(--tinta);
+  }
+
+  .steps-m__desc {
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+}

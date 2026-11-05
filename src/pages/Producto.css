@@ -1,0 +1,1194 @@
+/* Ficha de producto: frames "Desktop — Producto (rutina luz)" (1440) y "Celular — Producto (rutina luz)" (390). */
+
+/* ---------- Piezas compartidas ---------- */
+
+.pd-label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.pd-label--lg {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 23px;
+  color: var(--texto);
+}
+
+.pd-label--muted {
+  color: var(--gris-inactivo);
+}
+
+.pd-h2 {
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.pd-h2 .script {
+  font-size: var(--fs-seccion-script);
+  line-height: 90px;
+  letter-spacing: 0;
+}
+
+.pd-mobile {
+  display: none;
+}
+
+/* Fotos que se deslizan: las siguientes esperan a la derecha y entran por debajo del panel translúcido. */
+.pd-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.pd-slider::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 50.55%;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.pd-slider__images {
+  position: relative;
+}
+
+.pd-slider__images img,
+.pd-gallery__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease-in-out; /* Smart Animate de Figma */
+}
+
+.pd-slider__images img {
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+/* Productos recortados: se ven enteros sobre el gris, como el relleno "Ajustar" de Figma, sin agrandarse de más. */
+.pd-gallery__frame img[data-fit='contain'],
+.pd-gallery__mobile img[data-fit='contain'],
+.pd-slider__images img[data-fit='contain'],
+.pd-thumbs img[data-fit='contain'] {
+  object-fit: contain;
+  padding: 8%;
+}
+
+.pd-slider__images [data-state='after'],
+.pd-gallery__frame [data-state='after'] {
+  transform: translateX(205%);
+}
+
+.pd-slider__images [data-state='before'],
+.pd-gallery__frame [data-state='before'] {
+  transform: translateX(-105%);
+}
+
+.pd-slider__images [data-state='active'],
+.pd-gallery__frame [data-state='active'] {
+  transform: none;
+}
+
+.pd-slider__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 48px 48px;
+  border-radius: var(--radius);
+  background: rgb(233 234 237 / 0.75);
+}
+
+@keyframes pd-in {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+}
+
+/* Círculos de 96 para elegir producto o paso. */
+.pd-circles {
+  display: flex;
+  justify-content: space-between;
+  max-width: 601px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.pd-circles button {
+  width: 96px;
+  height: 96px;
+  border: 1px solid var(--gris-inactivo);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gris-inactivo);
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.pd-circles--num button {
+  font-size: 15px;
+}
+
+.pd-circles button:hover {
+  border-color: var(--tinta);
+  color: var(--tinta);
+}
+
+.pd-circles button[aria-pressed='true'] {
+  border-color: var(--tinta);
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+/* ---------- 01 · Producto ---------- */
+
+.pd-buy {
+  display: grid;
+  /* 96 + 16 + 700 + 16 + (48 + 534): el margen del panel va dentro de su columna. */
+  grid-template-columns: 96px minmax(0, 700fr) minmax(0, 582fr);
+  column-gap: 16px;
+  align-items: start;
+  margin-top: 149px;
+  padding-bottom: 60px;
+}
+
+.pd-thumbs {
+  display: grid;
+  gap: 12px;
+}
+
+.pd-thumbs button {
+  aspect-ratio: 96 / 120;
+  overflow: hidden;
+  background: var(--gris-panel);
+  opacity: 0.55;
+  transition: opacity 0.2s var(--ease);
+}
+
+.pd-thumbs button:hover,
+.pd-thumbs button[aria-pressed='true'] {
+  opacity: 1;
+}
+
+.pd-thumbs button[aria-pressed='true'] {
+  box-shadow: inset 0 0 0 1.5px var(--tinta);
+}
+
+.pd-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+.pd-gallery {
+  grid-column: 2;
+  position: relative;
+}
+
+.pd-gallery__frame {
+  position: relative;
+  aspect-ratio: 700 / 1000;
+  overflow: hidden;
+  background: var(--gris-panel);
+}
+
+.pd-gallery__nav {
+  position: absolute;
+  inset: auto 42px 28px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.pd-gallery__nav button {
+  width: 32px;
+  height: 30px;
+  font-size: 20px;
+  color: var(--tinta);
+}
+
+.pd-gallery__nav span:last-child {
+  display: flex;
+  gap: 6px;
+}
+
+.pd-gallery__mobile {
+  display: none;
+}
+
+.pd-panel {
+  grid-column: 3;
+  margin-left: 48px;
+}
+
+.pd-crumbs {
+  display: flex;
+  gap: 12px;
+  padding-top: 4px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--gris-inactivo);
+}
+
+.pd-crumbs a:hover {
+  color: var(--tinta);
+}
+
+.pd-title {
+  margin-top: 22px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 69px;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.pd-title .script {
+  font-size: clamp(64px, 23.4px + 5.25vw, 99px);
+  letter-spacing: 0;
+}
+
+.pd-subtitle {
+  margin-top: 21px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.pd-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 16px;
+  margin-top: 24px;
+  color: var(--tinta);
+}
+
+.pd-price > span {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+}
+
+.pd-price s {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--gris-inactivo);
+}
+
+.pd-price small {
+  margin-left: -8px;
+  font-size: 12px;
+  color: var(--gris-inactivo);
+}
+
+.pd-desc {
+  max-width: 520px;
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--texto);
+}
+
+.pd-includes {
+  margin-top: 28px;
+}
+
+.pd-includes__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pd-includes__pills button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 13px 5px 5px;
+  border: 1px solid var(--gris-medio);
+  border-radius: var(--pill);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--tinta);
+  transition:
+    border-color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.pd-includes__pills button:hover,
+.pd-includes__pills button[aria-pressed='true'] {
+  border-color: var(--tinta);
+}
+
+.pd-includes__pills button[aria-pressed='true'] {
+  background: var(--lila);
+}
+
+.pd-includes__pills img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--gris-panel);
+}
+
+.pd-includes__hint {
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--gris-inactivo);
+}
+
+.pd-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.pd-actions .stepper {
+  flex: none;
+  justify-content: space-between;
+  width: 112px;
+  height: 52px;
+  padding: 0 6px;
+  border-color: var(--gris-medio);
+}
+
+.pd-actions .btn {
+  flex: 1;
+}
+
+.pd-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--texto);
+}
+
+.pd-note a {
+  text-decoration: underline;
+}
+
+.pd-upsell {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--gris-medio);
+}
+
+.pd-upsell ul {
+  margin-top: 8px;
+}
+
+.pd-upsell li > label,
+.pd-upsell__session {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 96px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gris-medio);
+  cursor: pointer;
+}
+
+.pd-upsell__session {
+  border-bottom: 0;
+  cursor: default;
+}
+
+.pd-upsell img {
+  flex: none;
+  width: 64px;
+  height: 80px;
+  object-fit: cover;
+  background: var(--gris-panel);
+}
+
+.pd-upsell__text {
+  display: grid;
+  flex: 1;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--texto);
+}
+
+.pd-upsell__name {
+  margin-bottom: 2px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.pd-upsell__price {
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+/* Casilla de Figma: 22 × 22, borde 1,5 y radio 4. */
+.pd-upsell input {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  border: 1.5px solid var(--tinta);
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.pd-upsell input:checked {
+  background: var(--tinta)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M6 11.5l3.2 3.2L16 8' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E")
+    center / 100% no-repeat;
+}
+
+.pd-upsell__session .btn--link {
+  margin-right: 7px;
+}
+
+.pd-upsell > .btn {
+  margin-top: 24px;
+}
+
+
+/* ---------- 02 · Detalles ---------- */
+
+.pd-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  margin-top: 120px;
+}
+
+.pd-split__img {
+  width: 100%;
+  height: 0;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: 50% 85%;
+  border-radius: var(--radius);
+  background: var(--blanco);
+}
+
+.pd-details__panel {
+  padding: 184px 48px 48px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.pd-details__panel .pd-label--lg {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.pd-phrase {
+  margin-top: 20px;
+  font-size: clamp(34px, 28px + 1.52vw, 50px);
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.pd-phrase .script {
+  /* En Figma la línea manuscrita (y el resto de esa línea) baja 27 px más que con el interlineado de CSS. */
+  display: inline-block;
+  margin-top: 27px;
+  font-size: var(--fs-seccion-script);
+  line-height: 90px;
+  letter-spacing: 0;
+}
+
+.pd-rows {
+  max-width: 601px;
+  margin-top: 72px;
+}
+
+.pd-rows div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 25px 0 21px;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.pd-rows div:first-child {
+  padding-top: 0;
+}
+
+.pd-rows div:last-child {
+  border-bottom: 0;
+}
+
+.pd-rows dt {
+  flex: none;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.pd-rows dd {
+  font-size: 16px;
+  line-height: 25px;
+  text-align: right;
+  color: var(--texto);
+}
+
+/* ---------- 03 · Brillo propio ---------- */
+
+.pd-glow,
+.pd-use,
+.pd-session {
+  margin-top: 120px;
+}
+
+.pd-glow__body {
+  margin-top: 48px;
+  animation: pd-in 0.6s ease-in-out;
+}
+
+.pd-glow__rows {
+  max-width: 601px;
+  margin-top: 24px;
+  border-top: 1px solid var(--gris-medio);
+}
+
+.pd-glow__rows div {
+  display: grid;
+  gap: 8px;
+  padding: 28px 0 24px;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.pd-glow__rows dt {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.pd-glow__rows dd {
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--texto);
+}
+
+/* ---------- 04 · Cómo usarla ---------- */
+
+.pd-use__lead {
+  max-width: 520px;
+  margin-top: 48px;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--texto);
+}
+
+.pd-use__step {
+  position: relative;
+  min-height: 230px;
+  margin-top: 56px;
+  animation: pd-in 0.6s ease-in-out;
+}
+
+.pd-use__step > div {
+  position: relative;
+  z-index: 1;
+  max-width: 486px;
+  padding-top: 60px;
+}
+
+.pd-use__step h3 {
+  margin-top: 8px;
+  padding-bottom: 0;
+  border-bottom: 1px solid var(--tinta);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 29px;
+  color: var(--tinta);
+}
+
+.pd-use__step p:last-child {
+  max-width: 230px;
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--texto);
+}
+
+/* Producto en un círculo blanco de 230, con el punto donde termina la línea. */
+.pd-use__product {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 230px;
+  height: 230px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--blanco);
+}
+
+.pd-use__product img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pd-use__product::after {
+  content: '';
+  position: absolute;
+  top: 111px;
+  left: 111px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tinta);
+}
+
+/* ---------- 05 · Sumá tu sesión ---------- */
+
+.pd-session__panel {
+  align-items: center;
+  padding-top: 230px;
+  text-align: center;
+}
+
+.pd-session__words {
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+  margin-top: 40px;
+}
+
+.pd-session__words button {
+  position: relative;
+  font-size: clamp(34px, 3.2px + 4.22vw, 64px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+.pd-session__words button::before {
+  content: '';
+  position: absolute;
+  inset: -28px -49px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.pd-session__words button[aria-pressed='true'] {
+  color: var(--tinta);
+}
+
+.pd-session__words button[aria-pressed='true']::before {
+  opacity: 1;
+}
+
+.pd-session__detail {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  max-width: 440px;
+  margin-top: 36px;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--texto);
+  animation: pd-in 0.6s ease-in-out;
+}
+
+/* ---------- 06 · Los más elegidos ---------- */
+
+.pd-more {
+  margin-top: 84px;
+  /* En Figma el pie arranca 60 px después de las tarjetas (no 126). */
+  margin-bottom: -66px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1100px) {
+  .pd-buy {
+    grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .pd-panel {
+    margin-left: 16px;
+  }
+
+  .pd-use__product {
+    width: 160px;
+    height: 160px;
+  }
+
+  .pd-use__product::after {
+    top: 76px;
+    left: 76px;
+  }
+}
+
+/* ---------- Celular (frame "Celular — Producto (rutina luz)", 390) ---------- */
+
+@media (max-width: 760px) {
+  .pd-desktop {
+    display: none;
+  }
+
+  .pd-mobile {
+    display: block;
+  }
+
+  .pd-h2 {
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .pd-h2 .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  /* Galería que se desliza, panel debajo. */
+  .pd-buy {
+    display: block;
+    margin-top: 96px;
+    padding: 0;
+  }
+
+  .pd-thumbs,
+  .pd-gallery__frame,
+  .pd-gallery__nav {
+    display: none;
+  }
+
+  .pd-gallery__mobile {
+    display: flex;
+    gap: 8px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .pd-gallery__mobile li {
+    width: 330px;
+  }
+
+  .pd-gallery__mobile img {
+    width: 100%;
+    aspect-ratio: 330 / 430;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--gris-panel);
+  }
+
+  .pd-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 20px 24px 56px;
+  }
+
+  .pd-panel > * {
+    margin-top: 0;
+  }
+
+  .pd-crumbs {
+    padding: 0;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .pd-title {
+    font-size: 34px;
+    line-height: 61px;
+  }
+
+  .pd-title .script {
+    font-size: 76px;
+  }
+
+  .pd-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--tinta);
+  }
+
+  .pd-price {
+    gap: 10px;
+  }
+
+  .pd-price > span {
+    font-size: 28px;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  }
+
+  .pd-price s,
+  .pd-price small {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .pd-desc {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .pd-includes {
+    padding-top: 4px;
+  }
+
+  .pd-includes .pd-label,
+  .pd-upsell .pd-label,
+  .pd-session__mobile .pd-label {
+    font-weight: 600;
+    color: var(--texto);
+  }
+
+  .pd-includes__pills {
+    display: grid;
+    gap: 0;
+    margin-top: 0;
+  }
+
+  .pd-includes__pills button {
+    gap: 12px;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid var(--gris-medio);
+    border-radius: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  .pd-includes__pills img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+
+  .pd-includes__hint {
+    display: none;
+  }
+
+  .pd-actions {
+    padding-top: 8px;
+  }
+
+  .pd-actions .stepper {
+    width: 96px;
+    height: 50px;
+    border-color: var(--tinta);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .pd-actions .stepper button {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .pd-actions .btn {
+    padding-inline: 12px;
+  }
+
+  .pd-upsell {
+    padding-top: 0;
+    border: 0;
+  }
+
+  .pd-upsell ul {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .pd-upsell li > label {
+    gap: 20px;
+  }
+
+  .pd-upsell__session {
+    margin-top: 6px;
+    padding: 12px;
+    gap: 12px;
+    min-height: 0;
+    border-radius: var(--radius);
+    background: var(--gris-reservas);
+  }
+
+  .pd-upsell__session img {
+    border-radius: 6px;
+  }
+
+  .pd-upsell__session .pd-upsell__name {
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .pd-upsell > .btn {
+    margin-top: 14px;
+  }
+
+  /* Detalles: foto arriba, texto abajo y filas apiladas. */
+  .pd-split {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+    min-height: 0;
+    margin-top: 0;
+    padding: 0 0 56px;
+  }
+
+  .pd-split__img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 390 / 420;
+    border-radius: 0;
+  }
+
+  .pd-details__panel {
+    padding: 32px 24px 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .pd-details__panel .pd-label--lg {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .pd-phrase {
+    margin-top: 14px;
+    padding-top: 0;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .pd-phrase .script {
+    margin-top: 17px;
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .pd-rows {
+    max-width: none;
+    margin-top: 18px;
+  }
+
+  .pd-rows div,
+  .pd-rows div:first-child,
+  .pd-rows div:last-child {
+    display: grid;
+    gap: 4px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+
+  .pd-rows dt {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .pd-rows dd {
+    font-size: 15px;
+    line-height: 23px;
+    text-align: left;
+  }
+
+  /* Brillo propio y cómo usarla: tarjetas de 300 que se deslizan. */
+  .pd-glow,
+  .pd-use {
+    margin-top: 0;
+    padding: 56px 0;
+  }
+
+  .pd-glow .pd-mobile,
+  .pd-use .pd-mobile {
+    display: grid;
+    gap: 20px;
+  }
+
+  .pd-use .pd-mobile {
+    gap: 16px;
+  }
+
+  .pd-cards {
+    gap: 12px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .pd-cards li {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    width: 300px;
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+
+  .pd-use .pd-cards li {
+    gap: 8px;
+  }
+
+  .pd-cards img {
+    width: 100%;
+    aspect-ratio: 300 / 340;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--gris-panel);
+  }
+
+  /* Brillo propio: el producto recortado va sobre el fondo de la página. */
+  .pd-glow .pd-cards img {
+    object-fit: contain;
+    background: none;
+  }
+
+  .pd-cards h3 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--tinta);
+  }
+
+  .pd-cards__label {
+    margin-bottom: -4px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--gris-inactivo);
+  }
+
+  .pd-cards__step {
+    padding-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--texto);
+  }
+
+  .pd-cards__step span {
+    margin-right: 4px;
+    color: var(--tinta);
+  }
+
+  .pd-glow__in {
+    display: grid;
+    gap: 2px;
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+
+  .pd-glow__in .pd-cards__label {
+    margin: 0;
+  }
+
+  .pd-use__head {
+    display: grid;
+    gap: 12px;
+  }
+
+  .pd-use__lead {
+    margin: 0;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  /* Sumá tu sesión: bloque lila con las dos opciones. */
+  .pd-session {
+    margin-top: 0;
+  }
+
+  .pd-session__mobile {
+    display: grid;
+    gap: 20px;
+    padding: 56px 24px;
+    background: var(--gris-medio);
+  }
+
+  .pd-session__block {
+    display: grid;
+    justify-items: start;
+    gap: 10px;
+    padding-bottom: 8px;
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+
+  .pd-session__block img {
+    width: 100%;
+    aspect-ratio: 342 / 260;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .pd-session__block h3 {
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+    color: var(--tinta);
+  }
+
+  .pd-session__block .btn--link {
+    min-height: 32px;
+  }
+
+  .pd-more {
+    margin: 0;
+  }
+}

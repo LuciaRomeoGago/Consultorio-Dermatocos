@@ -1,0 +1,160 @@
+/* ---------- Frase destacada ("05 · Frase": 30 + manuscrita 80, centrada) ---------- */
+
+.quote-block {
+  max-width: 1044px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  font-size: clamp(16px, 12px + 1.25vw, 30px);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--tinta);
+}
+
+.quote-block .script {
+  font-size: var(--fs-frase-script);
+  line-height: 1.52;
+}
+
+/* ---------- Protocolo propio ("10 · Protocolo propio": 1440 × 720, texto a la izquierda y foto de 608 × 683) ---------- */
+
+.protocol {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42.2%;
+  gap: 32px;
+  max-width: var(--max);
+  min-height: 720px;
+  margin-inline: auto;
+  padding: 18px 21px 19px 64px;
+}
+
+.protocol__body {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  padding-top: 122px;
+}
+
+.protocol__title {
+  font-size: var(--fs-display);
+  font-weight: 500;
+  line-height: 1.167;
+  letter-spacing: -0.04em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.protocol__title .script {
+  font-size: clamp(76px, 54.7px + 5.33vw, 130px);
+  line-height: 0.65;
+  letter-spacing: 0;
+}
+
+.protocol__text {
+  max-width: 520px;
+  margin-top: 28px;
+  font-size: clamp(15px, 13px + 0.35vw, 18px);
+  line-height: 1.56;
+  color: var(--texto);
+}
+
+.protocol__body .protocol__link {
+  margin-top: 36px;
+}
+
+.protocol__btn {
+  display: none;
+}
+
+.protocol__img {
+  width: 100%;
+  height: 0; /* que la foto no estire la fila: ocupa el alto del bloque */
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* Celular (Figma 390): frase en dos líneas; protocolo con la foto arriba y el texto debajo. */
+@media (max-width: 760px) {
+  .quote-block {
+    font-size: 18px;
+    line-height: 37px;
+  }
+
+  .quote-block .script {
+    font-size: 48px;
+    line-height: 37px;
+  }
+
+  .protocol {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+    min-height: 0;
+    padding: 0 0 56px;
+  }
+
+  .protocol__img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 390 / 420;
+    border-radius: 0;
+  }
+
+  .protocol__body {
+    gap: 12px;
+    justify-items: stretch;
+    padding: 32px 24px 0;
+  }
+
+  .protocol__title {
+    font-size: 28px;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  }
+
+  .protocol__title .script {
+    font-size: 76px;
+    line-height: 42px;
+  }
+
+  .protocol__text {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .protocol__body .protocol__link {
+    display: none;
+  }
+
+  .protocol__btn {
+    display: inline-flex;
+  }
+}
+
+/* ---------- Cantidad ---------- */
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--tinta);
+  border-radius: var(--pill);
+  color: var(--tinta);
+}
+
+.stepper button {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.stepper button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.stepper output {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 500;
+}

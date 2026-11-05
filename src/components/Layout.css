@@ -1,0 +1,425 @@
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ---------- Barra superior (41 px escritorio · 25 px celular) ---------- */
+
+.topbar {
+  position: relative;
+  z-index: 2;
+  background: var(--lavanda);
+  color: var(--tinta);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.topbar__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 41px;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0 22.9% 0 15.7%; /* posiciones de los tres textos en Figma */
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    font-size: 10px;
+  }
+  .topbar__list {
+    justify-content: center;
+    min-height: 20px;
+    padding: 0 16px;
+  }
+  .topbar__list li + li {
+    display: none;
+  }
+}
+
+/* ---------- Navegación ---------- */
+
+/*
+ * Flota sobre la foto de cabecera: 24 px por debajo de la barra superior y 75 px de cada lado,
+ * como en Figma. El margen negativo hace que no empuje el contenido.
+ */
+.header {
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+  margin: 24px clamp(16px, 5.2vw, 75px) -120px;
+}
+
+.header__bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 96px;
+  padding: 0 28px 0 66px;
+  border-radius: 48px;
+  background: rgb(62 66 91 / 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--lavanda);
+}
+
+.header__links {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.header__links--right {
+  justify-content: flex-end;
+  gap: 53px;
+}
+
+.header__link {
+  font-size: var(--fs-nav);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 32px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s var(--ease);
+}
+
+.header__link:hover,
+.header__link.active {
+  border-bottom-color: currentColor;
+}
+
+.header__logo img {
+  width: 169px;
+  height: auto;
+}
+
+.header__toggle,
+.header__drawer {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .header__bar {
+    padding-left: 32px;
+  }
+  .header__links {
+    gap: 24px;
+  }
+  .header__links--right {
+    gap: 24px;
+  }
+  .header__logo img {
+    width: 130px;
+  }
+}
+
+/* Celular: píldora de 358 px con logo a la izquierda y menú que se despliega. */
+@media (max-width: 860px) {
+  .header {
+    top: 10px;
+    margin: 10px 16px -70px;
+  }
+
+  .header__bar {
+    display: flex;
+    justify-content: space-between;
+    min-height: 0;
+    padding: 8px 12px 8px 20px;
+    border-radius: 32px;
+  }
+
+  .header--open .header__bar {
+    border-radius: 32px 32px 0 0;
+  }
+
+  .header__links {
+    display: none;
+  }
+
+  .header__logo img {
+    width: 90px;
+  }
+
+  .header__toggle {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  .header__burger,
+  .header__burger::before,
+  .header__burger::after {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--lavanda);
+    transition: transform 0.3s var(--ease), opacity 0.2s;
+  }
+
+  .header__burger {
+    position: relative;
+  }
+
+  .header__burger::before,
+  .header__burger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+  }
+
+  .header__burger::before {
+    top: -6px;
+  }
+
+  .header__burger::after {
+    top: 6px;
+  }
+
+  .header--open .header__burger {
+    background: transparent;
+  }
+
+  .header--open .header__burger::before {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .header--open .header__burger::after {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  .header__drawer:not([hidden]) {
+    display: grid;
+    gap: 4px;
+    padding: 16px 12px 20px 20px;
+    border-radius: 0 0 32px 32px;
+    background: rgb(62 66 91 / 0.97);
+    animation: fade 0.25s var(--ease);
+  }
+
+  .header__drawer-link {
+    padding: 12px 0;
+    border-bottom: 1px solid rgb(235 234 254 / 0.2);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: var(--ls-etiqueta);
+    text-transform: uppercase;
+    color: var(--lavanda);
+  }
+
+  .header__drawer .btn {
+    margin-top: 16px;
+  }
+}
+
+/* ---------- Acceso al pedido ---------- */
+
+.cart-bubble {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 10px 0 24px;
+  border-radius: var(--pill);
+  background: var(--tinta);
+  color: var(--blanco);
+  font-size: var(--fs-boton);
+  font-weight: 500;
+  letter-spacing: var(--ls-boton);
+  text-transform: uppercase;
+  animation: fade-up 0.3s var(--ease);
+}
+
+.cart-bubble span {
+  display: grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--lavanda);
+  color: var(--tinta);
+}
+
+/* ---------- Pie (fondo #3E425B con las esquinas de arriba redondeadas) ---------- */
+
+.footer {
+  margin-top: var(--section-y);
+  border-radius: 65px 65px 0 0;
+  background: var(--navegacion);
+  color: var(--lavanda);
+  font-size: var(--fs-body-s);
+}
+
+.footer__inner {
+  display: grid;
+  /* Columnas de Figma: logo 470 + 28, tratamientos 450 (dos de 215 / 235), información 200, contacto. */
+  grid-template-columns: 36.7% 33.16% 14.74% minmax(0, 1fr);
+  row-gap: 40px;
+  align-items: start;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 206px 23px 22px 60px;
+}
+
+.footer__logo {
+  width: 100%;
+  max-width: 470px;
+  height: auto;
+  margin-top: -70px;
+}
+
+.footer__title {
+  margin-bottom: 23px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: var(--ls-etiqueta);
+  text-transform: uppercase;
+}
+
+.footer__col ul {
+  display: grid;
+  gap: 7px;
+  line-height: 23px;
+}
+
+@media (min-width: 1101px) {
+  .footer__col li {
+    white-space: nowrap;
+  }
+}
+
+.footer__col a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__twocol {
+  display: grid;
+  grid-template-columns: 47.8% minmax(0, 1fr);
+}
+
+/* Línea divisoria con el isotipo apoyado a la derecha. */
+.footer__legal {
+  grid-column: 1 / -1;
+  position: relative;
+  margin: 69px 0 0 23px;
+  padding: 28px 116px 0 0;
+  font-size: var(--fs-caption);
+}
+
+.footer__legal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 116px;
+  border-top: 1px solid var(--lavanda);
+}
+
+.footer__legal p {
+  padding-left: 81px;
+  line-height: 20px;
+}
+
+.footer__isotipo {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: 32px;
+}
+
+@media (max-width: 1100px) {
+  .footer__inner {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .footer__logo {
+    grid-column: 1 / -1;
+    max-width: 300px;
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Celular (componente "Mobile — Footer" de Figma). */
+  .footer {
+    margin-top: 0;
+    border-radius: 32px 32px 0 0;
+  }
+  .footer__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 32px;
+    padding: 48px 24px 32px;
+  }
+  .footer__logo {
+    width: 240px;
+    margin-top: 0;
+  }
+  .footer__title {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .footer__col ul {
+    gap: 10px;
+    font-size: 13px;
+    line-height: 20px;
+  }
+  .footer__twocol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 16px;
+  }
+  .footer__twocol ul {
+    gap: 8px;
+  }
+  .footer__legal {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 33px 0 0;
+  }
+  .footer__legal::before {
+    right: 0;
+    border-top-color: rgb(235 234 254 / 0.4);
+  }
+  .footer__legal p {
+    max-width: 282px;
+    padding: 4px 0 0;
+  }
+  .footer__isotipo {
+    position: static;
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+  }
+}
+
+/* Que los márgenes del primer bloque no se mezclen con el margen negativo de la navegación. */
+#contenido {
+  display: flow-root;
+}

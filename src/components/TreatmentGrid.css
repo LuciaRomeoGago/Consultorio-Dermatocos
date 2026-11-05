@@ -1,0 +1,54 @@
+.treatment-row {
+  padding-top: 20px;
+}
+
+.treatment-card {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  width: 206px;
+  transition: transform 0.35s var(--ease);
+}
+
+.treatment-card img {
+  width: 206px;
+  height: 258px;
+  object-fit: cover;
+  background: var(--gris-panel);
+}
+
+.treatment-card__name {
+  min-height: 20px;
+  font-size: var(--fs-etiqueta);
+  font-weight: 500;
+  letter-spacing: var(--ls-etiqueta);
+  line-height: 1.5;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--tinta);
+}
+
+.treatment-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tinta);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+}
+
+.treatment-card:hover,
+.treatment-card:focus-visible {
+  transform: translateY(-20px);
+}
+
+.treatment-card:hover .treatment-card__dot,
+.treatment-card:focus-visible .treatment-card__dot {
+  opacity: 1;
+}
+
+@media (max-width: 760px) {
+  .treatment-row > li {
+    order: var(--order-m);
+  }
+}

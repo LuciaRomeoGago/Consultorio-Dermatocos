@@ -1,0 +1,818 @@
+/* Conócenos: frames "Desktop — Conócenos" (1440) y "Celular — Conócenos" (390). */
+
+.ab-mobile {
+  display: none;
+}
+
+.ab-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+@keyframes ab-in {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+}
+
+/* ---------- 01 · Hola, soy Jazmín ---------- */
+
+/* El panel gris arranca casi en el borde (x 2) y solo tiene redondeadas las esquinas derechas. */
+.ab-hello {
+  display: grid;
+  grid-template-columns: minmax(0, 684fr) minmax(0, 697fr);
+  column-gap: 29px;
+  min-height: 760px;
+  margin-top: 149px;
+}
+
+.ab-hello__panel {
+  margin-left: calc(2px - var(--gutter-card));
+  padding: 112px 48px 48px 127px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--gris-panel);
+}
+
+.ab-hello__title {
+  margin-top: 14px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 49px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.ab-hello__title .script {
+  font-size: clamp(64px, 23.4px + 5.25vw, 99px);
+  line-height: 48px;
+  letter-spacing: 0;
+}
+
+.ab-hello__lead {
+  max-width: 440px;
+  margin-top: 51px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.ab-hello__text {
+  max-width: 372px;
+  margin-top: 13px;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--texto);
+}
+
+.ab-hello__actions {
+  display: flex;
+  align-items: center;
+  gap: 47px;
+  margin-top: 66px;
+}
+
+.ab-hello__img {
+  width: 100%;
+  height: 0;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* ---------- 02 · Una nota de Jazmín ---------- */
+
+.ab-note {
+  display: grid;
+  justify-items: center;
+  margin-top: 79px;
+  padding: 96px 48px 72px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+  text-align: center;
+}
+
+.ab-note__text {
+  max-width: 920px;
+  margin-top: 36px;
+  font-size: clamp(18px, 13px + 0.9vw, 26px);
+  line-height: 1.5;
+  color: var(--tinta);
+}
+
+.ab-note__sign {
+  margin-top: 16px;
+  font-size: clamp(64px, 36px + 4.1vw, 96px);
+  line-height: 146px;
+  color: var(--tinta);
+}
+
+/* ---------- Fotos que se deslizan detrás de un panel translúcido (03 y 06) ---------- */
+
+.ab-slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.ab-slider::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 50.55%;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.ab-slider__images {
+  position: relative;
+}
+
+.ab-slider__images img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+  transition: transform 0.6s ease-in-out; /* Smart Animate de Figma */
+}
+
+.ab-slider__images [data-state='after'] {
+  transform: translateX(205%);
+}
+
+.ab-slider__images [data-state='before'] {
+  transform: translateX(-105%);
+}
+
+.ab-slider__images [data-state='active'] {
+  transform: none;
+}
+
+.ab-slider__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 48px 48px;
+  border-radius: var(--radius);
+  background: rgb(233 234 237 / 0.75);
+}
+
+/* ---------- 03 · Mi enfoque ---------- */
+
+.ab-focus {
+  margin-top: 120px;
+}
+
+.ab-focus__body {
+  margin-top: 137px;
+  animation: ab-in 0.6s ease-in-out;
+}
+
+.ab-focus__title {
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.ab-focus__title .script {
+  /* En Figma "misión" queda 20 px más abajo de lo que da el interlineado. */
+  display: inline-block;
+  margin-top: 20px;
+  font-size: var(--fs-seccion-script);
+  line-height: 44px;
+  letter-spacing: 0;
+}
+
+/* "cómo trabajo": en Figma el título sube 58 px y tiene interlineado de 58 % (no 34 %), así la "j" no pisa el texto. */
+.ab-focus__title--largo {
+  margin: -62px 0 0 -6px;
+  line-height: 30px;
+}
+
+.ab-focus__title--largo .script {
+  margin-top: 26px;
+  line-height: 74px;
+}
+
+.ab-focus__title--largo + .ab-focus__text {
+  margin-top: 34px;
+}
+
+.ab-focus__text {
+  max-width: 560px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--texto);
+}
+
+.ab-focus__tabs {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.ab-focus__tabs button {
+  width: 188px;
+  min-height: 64px;
+  padding-top: 18px;
+  border-top: 1px solid var(--gris-inactivo);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: var(--gris-inactivo);
+  transition:
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.ab-focus__tabs button:hover,
+.ab-focus__tabs button[aria-selected='true'] {
+  color: var(--tinta);
+}
+
+.ab-focus__tabs button[aria-selected='true'] {
+  padding-top: 17px;
+  border-top: 2px solid var(--tinta);
+}
+
+/* ---------- 04 · Frase ---------- */
+
+.ab-phrase {
+  margin-top: 160px;
+  padding: 53px 0 5px; /* misma caja que en Figma (210 de alto) */
+  font-size: clamp(40px, 12px + 4.17vw, 72px);
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: var(--tinta);
+}
+
+/* Escritorio: en minúscula (Figma 72 px); en celular sigue en mayúscula. */
+.ab-phrase__strong {
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+/* En escritorio Figma deja un espacio doble entre "la" y "salud". */
+.ab-phrase__gap {
+  display: inline-block;
+  width: 0.39em; /* dos espacios de 92 px menos el espacio normal */
+}
+
+.ab-phrase .script {
+  font-size: 2.917em; /* 210 sobre 72 */
+  /* Interlineado medido contra la caja de Figma (725 × 210). */
+  line-height: 0.45;
+  letter-spacing: 0;
+}
+
+/* ---------- 05 · Mis productos ---------- */
+
+.ab-products {
+  margin-top: 160px;
+}
+
+.ab-products__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.ab-products__title {
+  margin-top: 63px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 63px;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.ab-products__title .script {
+  font-size: var(--fs-seccion-script);
+  letter-spacing: 0;
+}
+
+.ab-products__head .btn--link {
+  margin: 0 13px 3px 0;
+}
+
+.ab-products__list {
+  gap: 24px;
+  margin-top: 48px;
+  padding-bottom: 0;
+  padding-inline: 54px;
+  scroll-padding-inline: 54px;
+}
+
+.ab-products__list li {
+  width: 427px;
+}
+
+/* ---------- 06 · Nuestros valores ---------- */
+
+.ab-values {
+  margin-top: 160px;
+}
+
+.ab-values__panel {
+  align-items: center;
+  padding-top: 150px;
+  text-align: center;
+}
+
+.ab-values__words {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.ab-values__words button {
+  position: relative;
+  font-size: clamp(26px, 19px + 1.2vw, 36px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+/* Óvalo de Figma: 40 / 43 a los lados, 32 arriba y 11 abajo. */
+.ab-values__words button::before {
+  content: '';
+  position: absolute;
+  inset: -32px -43px -11px -40px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.ab-values__words button:hover,
+.ab-values__words button[aria-pressed='true'] {
+  color: var(--tinta);
+}
+
+.ab-values__words button[aria-pressed='true']::before {
+  opacity: 1;
+}
+
+.ab-values__text {
+  max-width: 460px;
+  min-height: 78px;
+  margin-top: 36px;
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--texto);
+  animation: ab-in 0.6s ease-in-out;
+}
+
+/* ---------- 07 · Detrás del consultorio ---------- */
+
+.ab-behind {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  margin-top: 120px;
+}
+
+.ab-behind__img {
+  width: 100%;
+  height: 0;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.ab-behind__panel {
+  display: flex;
+  flex-direction: column;
+  padding: 64px 48px 48px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+/* En Figma la caja del nombre arranca 32 px adentro y mide 50 de alto. */
+.ab-behind__name {
+  margin-top: 62px;
+  padding-left: 32px;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: var(--fs-seccion-script);
+  line-height: 50px;
+  color: var(--tinta);
+}
+
+.ab-behind__text {
+  max-width: 560px;
+  margin-top: 62px;
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--texto);
+}
+
+.ab-behind__facts {
+  max-width: 601px;
+  margin-top: 114px;
+}
+
+.ab-behind__facts div:first-child {
+  padding-top: 0;
+}
+
+.ab-behind__facts div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 25px 0 21px;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.ab-behind__facts div:last-child {
+  border-bottom: 0;
+}
+
+.ab-behind__facts dt {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.ab-behind__facts dd {
+  font-size: 16px;
+  line-height: 25px;
+  text-align: right;
+  color: var(--texto);
+}
+
+/* ---------- 08 · vos + jazmín ---------- */
+
+.ab-ig {
+  margin-top: 120px;
+}
+
+.ab-ig .home-ig {
+  padding-block: 0;
+}
+
+/* 10 · Protocolo propio: 720 después del comienzo de "vos + jazmín"; el pie, 120 después. */
+.ab-ig + .protocol {
+  margin-top: 246px;
+  margin-bottom: -6px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1100px) {
+  .ab-hello__panel {
+    padding-left: 48px;
+  }
+
+  .ab-products__list li {
+    width: 340px;
+  }
+}
+
+/* ---------- Celular (frame "Celular — Conócenos", 390) ---------- */
+
+@media (max-width: 760px) {
+  .ab-desktop {
+    display: none;
+  }
+
+  .ab-mobile {
+    display: grid;
+    gap: 20px;
+  }
+
+  .ab-label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  /* Tarjetas que se deslizan: misión / visión / cómo trabajo y los valores. */
+  .ab-cards {
+    gap: 12px;
+    padding: 0 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .ab-cards li {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    width: 300px;
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+
+  .ab-cards img {
+    width: 100%;
+    aspect-ratio: 300 / 360;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--gris-panel);
+  }
+
+  .ab-cards__title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 61px;
+    letter-spacing: -0.03em;
+    color: var(--tinta);
+  }
+
+  .ab-cards__title .script {
+    font-size: 76px;
+  }
+
+  .ab-cards--values li {
+    width: 280px;
+  }
+
+  .ab-cards--values img {
+    aspect-ratio: 280 / 320;
+  }
+
+  .ab-cards__word {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    color: var(--tinta);
+  }
+
+  /* 01 · Hola: la foto arriba, a todo el ancho y detrás del encabezado. */
+  .ab-hello {
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 0;
+    margin-top: -21px;
+    padding: 0;
+  }
+
+  .ab-hello__img {
+    height: 440px;
+    min-height: 0;
+    border-radius: 0;
+  }
+
+  .ab-hello__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 32px 24px 48px;
+    border-radius: 0;
+    background: none;
+  }
+
+  .ab-hello__panel > * {
+    margin: 0;
+  }
+
+  /* "hola," queda 8 px más arriba que con el interlineado de 45 (Figma). */
+  .ab-hello__panel > .ab-hello__title {
+    margin-top: -16px;
+    font-size: 34px;
+    line-height: 61px;
+  }
+
+  .ab-hello__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .ab-hello__lead {
+    max-width: none;
+    font-size: 16px;
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  .ab-hello__text {
+    max-width: none;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .ab-hello__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding-top: 4px;
+  }
+
+  .ab-hello__actions .btn--primary {
+    align-self: stretch;
+  }
+
+  .ab-hello__actions .btn--link {
+    min-height: 32px;
+    border-bottom: 0;
+  }
+
+  /* 02 · Nota: sin panel, alineada a la izquierda. */
+  .ab-note {
+    justify-items: start;
+    gap: 16px;
+    margin: 0;
+    padding: 56px 24px;
+    border-radius: 0;
+    background: none;
+    text-align: left;
+  }
+
+  .ab-note > * {
+    margin: 0;
+  }
+
+  .ab-note__text {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  }
+
+  .ab-note__sign {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  /* 03 · Mi enfoque */
+  .ab-focus {
+    margin: 0;
+    padding: 56px 0;
+  }
+
+  /* 04 · Frase */
+  .ab-phrase {
+    margin: 0;
+    padding: 42px 24px 48px;
+    font-size: 28px;
+    line-height: 27px;
+  }
+
+  .ab-phrase__gap {
+    display: none;
+  }
+
+  .ab-phrase__strong {
+    text-transform: uppercase;
+  }
+
+  .ab-phrase .script {
+    font-size: 76px;
+    line-height: 52px;
+  }
+
+  /* 05 · Mis productos */
+  .ab-products {
+    margin: 0;
+    padding: 56px 0;
+  }
+
+  .ab-products__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ab-products__title {
+    margin-top: 8px;
+    font-size: 34px;
+    line-height: 61px;
+  }
+
+  .ab-products__title .script {
+    font-size: 76px;
+  }
+
+  .ab-products__head .btn--link {
+    min-height: 32px;
+    margin: 0;
+    border-bottom: 0;
+  }
+
+  .ab-products__list {
+    gap: 12px;
+    margin-top: 20px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .ab-products__list li {
+    width: 290px;
+  }
+
+  /* 06 · Nuestros valores */
+  .ab-values {
+    margin: 0;
+    padding: 56px 0;
+  }
+
+  /* 07 · Detrás del consultorio: foto a todo el ancho y texto abajo. */
+  .ab-behind {
+    display: block;
+    min-height: 0;
+    margin: 0;
+    padding: 0 0 56px;
+  }
+
+  .ab-behind__img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 390 / 420;
+    border-radius: 0;
+  }
+
+  .ab-behind__panel {
+    gap: 14px;
+    padding: 32px 24px 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .ab-behind__panel > * {
+    margin: 0;
+  }
+
+  .ab-behind__name {
+    padding: 0;
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .ab-behind__text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .ab-behind__facts {
+    max-width: none;
+    padding-top: 4px;
+  }
+
+  .ab-behind__facts div,
+  .ab-behind__facts div:first-child,
+  .ab-behind__facts div:last-child {
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+
+  .ab-behind__facts dt {
+    flex: none;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .ab-behind__facts dd {
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  /* 08 · vos + jazmín y 10 · protocolo */
+  .ab-ig {
+    margin: 0;
+  }
+
+  .ab-ig .home-ig {
+    padding: 56px 0;
+  }
+
+  .ab-ig + .protocol {
+    margin: 0;
+  }
+}

@@ -1,0 +1,752 @@
+/* Página "Reservas": frames "Desktop — Reservas" (1440) y "Celular — Reservas" (390). */
+
+/* ---------- 01 · Encabezado: título a la izquierda y los tres pasos a la derecha ---------- */
+
+.bk-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px 48px;
+  align-items: start;
+  padding-top: 229px;
+}
+
+.bk-head__title {
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.bk-head__title .script {
+  font-size: var(--fs-script-hero);
+  line-height: 69px;
+  letter-spacing: 0;
+}
+
+.bk-head__lead {
+  margin-top: 28px;
+  font-size: clamp(14px, 12.5px + 0.38vw, 18px);
+  line-height: 1.56;
+  color: var(--texto);
+}
+
+.bk-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 170px);
+  gap: 20px;
+  margin: 16px 116px 0 0;
+}
+
+.bk-steps li {
+  display: grid;
+  gap: 4px;
+  padding-top: 13px;
+  border-top: 1px solid var(--gris-medio);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  color: var(--tinta);
+}
+
+.bk-steps span {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--gris-inactivo);
+}
+
+/* ---------- 02 · Reserva: lista de tratamientos y turnero blanco ---------- */
+
+.bk {
+  display: grid;
+  grid-template-columns: minmax(0, 540px) minmax(0, 736px);
+  justify-content: space-between;
+  gap: 38px;
+  margin-top: 26px;
+  padding: 40px 40px 40px 56px;
+  border-radius: var(--radius);
+  background: var(--gris-reservas);
+}
+
+.bk-list,
+.bk-cal {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.bk-list {
+  padding-top: 24px;
+}
+
+.bk-list legend {
+  float: left;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 29px;
+  color: var(--tinta);
+}
+
+.bk-option {
+  clear: both;
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  column-gap: 0;
+  align-items: center;
+  min-height: 72px;
+  padding: 13px 20px 12px 16px;
+  border-bottom: 1px solid var(--gris-medio);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease);
+}
+
+.bk-option:first-of-type {
+  border-top: 1px solid var(--gris-medio);
+}
+
+.bk-option:hover {
+  background: rgb(214 211 245 / 0.45);
+}
+
+.bk-option:has(input:checked) {
+  background: var(--lila);
+}
+
+/* Radio de Figma: círculo de 16 con borde de 1,5; elegido se rellena. */
+.bk-option input {
+  grid-row: 1 / 3;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border: 1.5px solid var(--tinta);
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+}
+
+.bk-option input:checked {
+  background: var(--tinta);
+}
+
+.bk-option input:focus-visible {
+  outline: 2px solid var(--tinta);
+  outline-offset: 3px;
+}
+
+.bk-option__name {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 26px;
+  color: var(--tinta);
+}
+
+.bk-option__tagline {
+  grid-column: 2;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--texto);
+}
+
+.bk-option__meta {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.bk-select {
+  display: none;
+}
+
+/* Turnero: datos a la izquierda (284) y calendario a la derecha. */
+.bk-panel {
+  display: grid;
+  grid-template-columns: 284px minmax(0, 1fr);
+  min-height: 858px;
+  border-radius: var(--radius);
+  background: var(--blanco);
+}
+
+.bk-panel__info {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 32px 40px;
+  border-right: 1px solid var(--gris-panel);
+}
+
+.bk-panel__brand {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.bk-panel__title {
+  min-height: 58px;
+  max-width: 220px;
+  margin-top: 11px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  color: var(--tinta);
+}
+
+.bk-panel__facts {
+  display: grid;
+  gap: 22px;
+  margin-top: 54px;
+}
+
+.bk-panel__facts dt,
+.bk-cal__tz span,
+.bk-cal__weekday {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gris-inactivo);
+}
+
+.bk-panel__facts dd {
+  margin-top: 1px;
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--tinta);
+}
+
+.bk-panel__policy {
+  max-width: 220px;
+  margin-top: auto;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--texto);
+}
+
+.bk-panel__main {
+  position: relative;
+  padding: 179px 32px 40px;
+}
+
+.bk-panel__subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  color: var(--tinta);
+}
+
+/* Sin tratamiento elegido, el calendario queda apagado y aparece la píldora oscura encima. */
+.bk-panel__notice {
+  position: absolute;
+  z-index: 1;
+  top: 399px;
+  left: 50%;
+  padding: 14px 24px;
+  border-radius: var(--pill);
+  background: var(--tinta);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  white-space: nowrap;
+  color: var(--blanco);
+  transform: translateX(-50%);
+}
+
+.bk-cal {
+  margin-top: 25px;
+  transition: opacity 0.3s var(--ease);
+}
+
+.bk-cal:disabled {
+  opacity: 0.3;
+}
+
+.bk-cal__month {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 388px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 23px;
+  color: var(--tinta);
+}
+
+.bk-cal__month > span:first-child::first-letter {
+  text-transform: uppercase;
+}
+
+.bk-cal__arrows {
+  display: flex;
+  gap: 4px;
+}
+
+.bk-cal__arrows button {
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  color: var(--tinta);
+}
+
+.bk-cal__arrows button:disabled {
+  opacity: 0.3;
+}
+
+.bk-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 55px));
+  row-gap: 12px;
+  justify-items: center;
+  max-width: 388px;
+  margin-top: 25px;
+}
+
+.bk-cal__weekday {
+  margin-bottom: 9px;
+}
+
+.bk-cal__day {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--gris-medio);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tinta);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.bk-cal__day:hover:not(:disabled) {
+  background: var(--lila);
+}
+
+.bk-cal__day[aria-pressed='true'] {
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.bk-cal__day:disabled {
+  background: none;
+  font-weight: 400;
+  color: var(--gris-inactivo);
+  cursor: default;
+}
+
+.bk-cal__times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 400px;
+  margin-top: 24px;
+}
+
+.bk-cal__tz {
+  display: grid;
+  gap: 1px;
+  margin-top: 33px;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--tinta);
+}
+
+.bk-confirm {
+  display: grid;
+  gap: 16px;
+  max-width: 400px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gris-panel);
+}
+
+/* ---------- 03 · Frase y 04 · Preguntas ---------- */
+
+.bk-quote {
+  margin-top: 80px;
+}
+
+.bk-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 760px);
+  gap: 32px;
+  align-items: start;
+  padding-top: 82px;
+  padding-bottom: 223px;
+}
+
+.bk-faq__title {
+  margin-left: 30px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.bk-faq__title .script {
+  font-size: var(--fs-seccion-script);
+  letter-spacing: 0;
+}
+
+.bk-faq .accordion {
+  margin-top: 12px;
+}
+
+.bk-done {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+  padding-block: 209px 120px;
+}
+
+/* Datos para la seña, después de reservar. */
+.bk-sena {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: 16px 40px;
+  margin: 0;
+  padding: 24px 28px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.bk-sena dt {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gris-inactivo);
+}
+
+.bk-sena dd {
+  margin: 2px 0 0;
+  font-size: 15px;
+  color: var(--tinta);
+  overflow-wrap: anywhere;
+}
+
+.bk-sena .bk-sena__amount {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.bk-sena__note {
+  grid-column: 1 / -1;
+  max-width: 560px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--texto);
+}
+
+@media (max-width: 760px) {
+  .bk-sena {
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+.bk-done__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1240px) {
+  .bk-head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bk-steps {
+    margin-right: 0;
+  }
+
+  .bk {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 40px;
+  }
+}
+
+/* ---------- Celular (frame "Celular — Reservas", 390) ---------- */
+
+@media (max-width: 760px) {
+  .bk-head {
+    gap: 12px;
+    padding: 104px 24px 32px;
+  }
+
+  .bk-head__title {
+    padding-top: 17px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .bk-head__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .bk-head__lead {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .bk-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding-top: 12px;
+  }
+
+  .bk-steps li {
+    padding-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .bk-steps span {
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  .container-card:has(> .bk) {
+    padding-inline: 0;
+  }
+
+  .bk {
+    gap: 20px;
+    margin-top: 0;
+    padding: 40px 24px;
+    border-radius: 0;
+  }
+
+  .bk-list {
+    display: none;
+  }
+
+  .bk-select {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .bk-select__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--texto);
+  }
+
+  .bk-select__box {
+    position: relative;
+    display: flex;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--tinta);
+    color: var(--tinta);
+  }
+
+  .bk-select select {
+    flex: 1;
+    min-width: 0;
+    padding-right: 36px;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+    color: inherit;
+    appearance: none;
+  }
+
+  .bk-select select:invalid,
+  .bk-select select:has(option[value='']:checked) {
+    color: var(--gris-inactivo);
+  }
+
+  .bk-select svg {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    pointer-events: none;
+  }
+
+  /* Turnero en una sola columna, en el orden del frame. */
+  .bk-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .bk-panel__info,
+  .bk-panel__main {
+    display: contents;
+  }
+
+  .bk-panel__brand {
+    order: 1;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .bk-panel__title {
+    display: none;
+  }
+
+  .bk-panel__facts {
+    order: 2;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gris-panel);
+  }
+
+  .bk-panel__facts dd {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .bk-panel__subtitle {
+    order: 3;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .bk-panel__notice {
+    position: static;
+    order: 4;
+    padding: 0;
+    background: none;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+    white-space: normal;
+    color: var(--texto);
+    transform: none;
+  }
+
+  .bk-cal {
+    order: 5;
+    margin: 0;
+  }
+
+  .bk-cal:disabled {
+    opacity: 0.35;
+  }
+
+  .bk-cal__month {
+    max-width: none;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .bk-cal__arrows button {
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+  }
+
+  .bk-cal__grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    row-gap: 8px;
+    max-width: none;
+    margin-top: 8px;
+  }
+
+  .bk-cal__weekday {
+    margin-bottom: 0;
+  }
+
+  .bk-cal__day {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .bk-cal__tz {
+    margin-top: 16px;
+    padding-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .bk-confirm {
+    order: 6;
+    margin: 0;
+  }
+
+  .bk-panel__policy {
+    order: 7;
+    max-width: none;
+    margin: 0;
+  }
+
+  .bk-quote {
+    margin-top: 0;
+    padding: 48px 24px;
+    font-size: 12px;
+    line-height: 35px;
+  }
+
+  .bk-quote .script {
+    line-height: 35px;
+  }
+
+  .bk-faq {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 56px;
+  }
+
+  .bk-faq__title {
+    margin-left: 0;
+    padding-top: 17px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .bk-faq__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .bk-faq .accordion {
+    margin-top: 0;
+  }
+}

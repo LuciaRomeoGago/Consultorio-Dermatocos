@@ -1,0 +1,67 @@
+/*
+ * Tokens tomados del archivo de Figma: estilos de color (Color/…) y de texto (Desktop/… y Mobile/…).
+ * Los tamaños van de la medida de celular (390 px) a la de escritorio (1440 px) con clamp().
+ */
+:root {
+  /* Color */
+  --tinta: #26243f;
+  --texto: #4a4a63;
+  --gris-inactivo: #9d9cb2;
+  --gris-medio: #c9c8d6;
+  --gris-panel: #e9eaed;
+  --gris-reservas: #dedfe6;
+  --lila: #d6d3f5;
+  --lavanda: #ebeafe; /* solo botones y barra superior, nunca de fondo de sección */
+  --navegacion: #3e425b;
+  --blanco: #ffffff;
+
+  /* Tipografía */
+  --sans: 'Poppins', system-ui, sans-serif;
+  --script: 'Mrs Saint Delafield', cursive;
+
+  /* Títulos de sección: "tratamientos a tu medida" (38 + manuscrita 128 en escritorio) */
+  --fs-seccion: clamp(34px, 32.5px + 0.38vw, 38px);
+  --fs-seccion-script: clamp(76px, 56.7px + 4.952vw, 128px);
+  /* Títulos de bloque: "salud & piel", "rutina luz", "Hola, soy jazmín" (72 en escritorio) */
+  --fs-display: clamp(34px, 19.9px + 3.619vw, 72px);
+  --fs-display-script: clamp(76px, 56.7px + 4.952vw, 128px);
+  /* Título de página (Desktop/Título 52 · Mobile/Título 34) */
+  --fs-titulo: clamp(34px, 1.9rem + 1.7vw, 52px);
+  --fs-script-titulo: clamp(76px, 3.4rem + 5vw, 128px);
+  --fs-script-hero: clamp(64px, 3rem + 3.3vw, 99px);
+  --fs-frase: clamp(12px, 9.03px + 0.762vw, 20px);
+  --fs-frase-script: clamp(48px, 36.1px + 3.048vw, 80px);
+  --fs-bajada: clamp(14px, 8.8px + 1.333vw, 28px);
+  --fs-cita: clamp(18px, 0.9rem + 0.8vw, 22px);
+  --fs-paso: clamp(18px, 1rem + 0.6vw, 26px);
+  --fs-numero: clamp(56px, 2.5rem + 2.6vw, 96px);
+  --fs-palabra: clamp(44px, 26px + 3.06vw, 70px);
+
+  --fs-body-l: clamp(14px, 0.8rem + 0.25vw, 17px);
+  --fs-body: clamp(15px, 0.9rem + 0.06vw, 16px);
+  --fs-body-s: 15px;
+  --fs-caption: 13px;
+  --fs-nombre: clamp(16px, 0.95rem + 0.06vw, 17px);
+  --fs-label: 14px;
+  --fs-boton: 14px;
+  --fs-etiqueta: 13px;
+  --fs-nav: 16px;
+  --fs-meta: 12px;
+
+  --lh-body: 1.55;
+  --ls-titulo: -0.03em;
+  --ls-etiqueta: 1px;
+  --ls-boton: 0.012em;
+
+  /* Espaciado y forma */
+  --gutter: clamp(24px, 3.75vw, 54px); /* textos: 54 px del borde en escritorio, 24 px en celular */
+  --gutter-card: clamp(0px, 1.43vw - 5.6px, 15px); /* tarjetas grandes casi a sangre */
+  --section-y: clamp(56px, 8.75vw, 126px);
+  --radius: 10px;
+  --radius-lg: 10px;
+  --pill: 100px;
+  --max: 1440px;
+  --btn-h: 52px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}

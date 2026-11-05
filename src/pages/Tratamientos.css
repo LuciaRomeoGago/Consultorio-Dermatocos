@@ -1,0 +1,325 @@
+/* Medidas del frame "Desktop — Tratamientos" (1440) y "Celular — Tratamientos" (390) de Figma. */
+
+/* ---------- 01 · Foto de cabecera: 600 de alto, espejada, se ve el tercio de arriba ---------- */
+
+.tt-hero {
+  position: relative;
+  aspect-ratio: 1440 / 600;
+  overflow: hidden;
+}
+
+@media (min-width: 861px) {
+  .tt-hero {
+    margin-top: -41px; /* la barra superior va encima de la foto */
+  }
+}
+
+.tt-hero img {
+  position: absolute;
+  top: -6.17%;
+  left: 0;
+  width: 106.18%;
+  height: 106.17%;
+  object-fit: cover;
+  object-position: 50% 0;
+  transform: scaleX(-1);
+}
+
+/* "Degradé texto": velo de tinta a la izquierda. */
+/* ---------- 02 · Diagnóstico: título a la izquierda y recuadro gris de 692 a la derecha ---------- */
+
+.tt-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 48.06%;
+  min-height: 514px;
+}
+
+.tt-intro__head {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  padding: 96px 24px 48px clamp(24px, 11.04vw, 159px);
+}
+
+.tt-intro__title {
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: 90px;
+  letter-spacing: -0.01em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tt-intro__title .script {
+  font-size: var(--fs-seccion-script);
+  line-height: 90px;
+  letter-spacing: 0;
+}
+
+.tt-intro__btn {
+  min-width: 213px;
+  margin-top: 83px;
+}
+
+.tt-intro__box {
+  display: flex;
+  align-items: center;
+  padding: 48px 64px;
+  background: var(--gris-panel);
+}
+
+.tt-intro__box p {
+  max-width: 564px;
+  font-size: var(--fs-bajada);
+  line-height: 1.57;
+  color: var(--tinta);
+}
+
+/* ---------- 03 · Lo que te ofrecemos ---------- */
+
+.tt-offer {
+  padding-top: 61px;
+}
+
+/* La bajada arranca debajo de "ofrecemos", alineada con la manuscrita. */
+.tt-offer__text {
+  max-width: 960px;
+  margin: -24px 0 0 228px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.tt-offer__row {
+  max-width: var(--max);
+  margin: 19px auto 0;
+  padding-bottom: 72px;
+}
+
+/* Se ven seis tarjetas (el marco de Figma recorta en 1390); el resto aparece al deslizar. */
+.tt-offer__row .scroller {
+  margin-inline: 54px 50px;
+}
+
+@media (min-width: 1200px) {
+  .tt-offer__text {
+    white-space: nowrap;
+  }
+}
+
+/* ---------- 05 · Frase ---------- */
+
+.tt-quote {
+  margin-top: 187px;
+}
+
+/* ---------- 06 · Cómo es una sesión ---------- */
+
+.tt-session {
+  margin-top: 215px;
+}
+
+/* ---------- 07 · Tu rutina en casa ---------- */
+
+.tt-routine {
+  padding-top: 180px;
+}
+
+.tt-routine__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.tt-routine__head .btn--link {
+  margin-right: 18px;
+}
+
+.tt-routine__grid {
+  margin-top: 24px;
+}
+
+/* ---------- 09 · Preguntas frecuentes ---------- */
+
+.tt-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 760px);
+  gap: 32px;
+  align-items: start;
+  padding-top: 4px;
+  padding-bottom: 210px;
+}
+
+.tt-faq__title {
+  font-size: clamp(34px, 25.1px + 2.1vw, 56px);
+  font-weight: 500;
+  line-height: 80px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tt-faq__title .script {
+  font-size: var(--fs-seccion-script);
+  letter-spacing: 0;
+}
+
+.tt-faq .accordion {
+  margin-top: 12px;
+}
+
+/* ---------- Celular (frame "Celular — Tratamientos", 390) ---------- */
+
+@media (max-width: 760px) {
+  .tt-hero {
+    margin-top: -20px;
+    aspect-ratio: 390 / 182;
+  }
+
+  .tt-hero img {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 0;
+    transform: none;
+  }
+
+  /* Título, texto y botón apilados. */
+  .tt-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    padding: 40px 24px 48px;
+  }
+
+  .tt-intro__head {
+    display: contents;
+  }
+
+  .tt-intro__title {
+    padding-top: 18px;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  }
+
+  .tt-intro__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .tt-intro__box {
+    order: 2;
+    padding: 0;
+    background: none;
+  }
+
+  .tt-intro__box p {
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--texto);
+  }
+
+  .tt-intro__btn {
+    order: 3;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .tt-offer {
+    padding-top: 56px;
+  }
+
+  .tt-offer__text {
+    max-width: none;
+    margin: 12px 0 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--texto);
+  }
+
+  .tt-offer__row {
+    margin-top: 4px;
+    padding-bottom: 52px;
+  }
+
+  .tt-offer__row .scroller {
+    gap: 12px;
+    margin-inline: 0;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .tt-quote {
+    margin-top: 0;
+    padding: 48px 24px;
+  }
+
+  .tt-session {
+    margin-top: 0;
+    padding: 56px 0;
+  }
+
+  .tt-routine {
+    padding-block: 56px;
+  }
+
+  .tt-routine__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tt-routine__head .btn--link {
+    min-height: 32px;
+    margin-right: 0;
+  }
+
+  .tt-routine__grid {
+    display: flex;
+    gap: 12px;
+    margin: 20px calc(var(--gutter) * -1) 0;
+    padding-inline: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 24px;
+    scrollbar-width: none;
+  }
+
+  .tt-routine__grid > * {
+    flex: none;
+    width: 290px;
+    scroll-snap-align: start;
+  }
+
+  .tt-faq {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 50px 56px;
+  }
+
+  .tt-faq__title {
+    padding-top: 17px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .tt-faq__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .tt-faq .accordion {
+    margin-top: 0;
+  }
+}

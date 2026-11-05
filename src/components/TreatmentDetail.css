@@ -1,0 +1,249 @@
+/* "04 · Detalle tratamientos": bloque gris de 1440 × 947, índice de 720 y foto de 720. */
+.tdetail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-height: 947px;
+  background: var(--gris-panel);
+}
+
+.tdetail__index {
+  padding: 64px clamp(24px, 6.7vw, 96px) 64px clamp(24px, 5.6vw, 80px);
+}
+
+.tdetail__eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+/* "conocé cada" (52) y "tratamiento" en manuscrita (128). */
+.tdetail__title {
+  margin-top: 39px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tdetail__title .script {
+  font-size: var(--fs-seccion-script);
+  line-height: 90px;
+  letter-spacing: 0;
+}
+
+.tdetail__list {
+  margin-top: 28px;
+}
+
+.tdetail__item {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.tdetail__row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 26px;
+  text-align: left;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+.tdetail__item[data-open='true'] .tdetail__row,
+.tdetail__row:hover {
+  color: var(--tinta);
+}
+
+.tdetail__num {
+  flex: none;
+  min-width: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.tdetail__name {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.tdetail__detail {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  padding: 10px 0 6px 34px;
+  animation: fade-up 0.35s var(--ease);
+}
+
+.tdetail__detail[hidden] {
+  display: none;
+}
+
+.tdetail__tagline {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--texto);
+}
+
+.tdetail__meta {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.tdetail__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  padding-top: 6px;
+}
+
+.tdetail__photos {
+  position: relative;
+  overflow: hidden;
+}
+
+.tdetail__photos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+
+.tdetail__photos img[data-active='true'] {
+  opacity: 1;
+}
+
+/* La ficha con selector solo se ve en celular. */
+.tdetail__card {
+  display: none;
+}
+
+/* ---------- Celular (Figma 390): título y ficha gris con selector, sin foto ---------- */
+
+@media (max-width: 760px) {
+  .tdetail {
+    display: block;
+    min-height: 0;
+    background: none;
+  }
+
+  .tdetail__index {
+    padding: 56px 24px;
+  }
+
+  .tdetail__eyebrow,
+  .tdetail__list,
+  .tdetail__photos {
+    display: none;
+  }
+
+  .tdetail__title {
+    margin-top: 0;
+    padding-top: 17px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .tdetail__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .tdetail__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+    padding: 24px 20px 20px;
+    border-radius: 12px;
+    background: var(--gris-reservas);
+  }
+
+  .tdetail__select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--tinta);
+    color: var(--tinta);
+  }
+
+  .tdetail__select select {
+    flex: 1;
+    min-width: 0;
+    padding-right: 36px;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+    color: inherit;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .tdetail__select svg {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    pointer-events: none;
+  }
+
+  .tdetail__card .tdetail__tagline {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .tdetail__card .tdetail__meta {
+    color: var(--gris-inactivo);
+  }
+
+  /* Texto recortado a 140 px con un degradé al pie, como en Figma. */
+  .tdetail__text {
+    position: relative;
+    max-height: 140px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 23px;
+    white-space: pre-line;
+    color: var(--tinta);
+  }
+
+  .tdetail__text::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0;
+    height: 48px;
+    background: linear-gradient(rgb(222 223 230 / 0), var(--gris-reservas));
+  }
+
+  .tdetail__card-actions {
+    display: grid;
+    justify-items: stretch;
+    gap: 4px;
+    padding-top: 4px;
+  }
+
+  .tdetail__card-actions .btn--link {
+    justify-self: center;
+    min-height: 32px;
+  }
+}

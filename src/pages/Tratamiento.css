@@ -1,0 +1,1358 @@
+/* Ficha de tratamiento: frames "Desktop — Tratamiento anti-age" (1440) y "Celular — Tratamiento anti-age" (390). */
+
+/* ---------- Piezas compartidas ---------- */
+
+.tr-label {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 23px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.tr-title {
+  font-size: clamp(34px, 28.4px + 1.43vw, 48px);
+  font-weight: 500;
+  line-height: 53px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tr-title .script {
+  font-size: var(--fs-seccion-script);
+  letter-spacing: 0;
+}
+
+/* Tarjetas de 1410 × 760: foto y panel de 697 con 16 de separación. */
+.tr-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  margin-top: 120px;
+}
+
+.tr-split__img {
+  width: 100%;
+  height: 0;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.tr-split--reverse .tr-split__img {
+  order: 2;
+}
+
+/* Fotos que se deslizan al cambiar de paso o de activo. */
+.tr-process__images img,
+.tr-actives__images img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: transform 0.6s ease-in-out; /* Smart Animate de Figma */
+}
+
+.tr-process__images [data-state='active'],
+.tr-actives__images [data-state='active'] {
+  transform: none;
+}
+
+/* Texto que entra desde la derecha al cambiar (los inactivos esperan 70 px a la derecha en Figma). */
+@keyframes tr-in {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+}
+
+/* ---------- 01 · Hero ---------- */
+
+.tr-hero {
+  margin-top: 149px;
+}
+
+@media (min-width: 761px) {
+  .tr-hero {
+    display: grid;
+    grid-template-columns: 50.6% minmax(0, 1fr);
+    min-height: 760px;
+  }
+
+  .tr-hero > * {
+    grid-row: 1;
+  }
+
+  .tr-hero::before {
+    content: '';
+    grid-row: 1;
+    grid-column: 1 / -1;
+    border-radius: var(--radius);
+    background: var(--gris-panel);
+  }
+}
+
+.tr-hero__panel {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px 48px 135px;
+}
+
+.tr-hero__crumbs {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--gris-inactivo);
+}
+
+.tr-hero__crumbs a:hover {
+  color: var(--tinta);
+}
+
+.tr-hero__title {
+  margin-top: 44px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.tr-hero__title .script {
+  font-size: var(--fs-script-hero);
+  letter-spacing: 0;
+}
+
+.tr-hero__tagline {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.tr-hero__desc {
+  max-width: 427px;
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 25px;
+  white-space: pre-line;
+  color: var(--texto);
+}
+
+.tr-hero__facts {
+  display: flex;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.tr-hero__facts div {
+  width: 200px;
+  padding-left: 24px;
+  border-left: 1px solid var(--gris-medio);
+}
+
+.tr-hero__facts div:first-child {
+  width: 176px;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.tr-hero__facts dt {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gris-inactivo);
+}
+
+.tr-hero__facts dd {
+  margin-top: 3px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  color: var(--tinta);
+}
+
+.tr-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 56px;
+  margin-top: 36px;
+}
+
+.tr-hero__img {
+  grid-column: 2;
+  width: 100%;
+  height: 0;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* ---------- Índice de secciones (barra oscura) ---------- */
+
+.tr-index {
+  background: var(--tinta);
+}
+
+.tr-index ul {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  max-width: var(--max);
+  margin-inline: auto;
+}
+
+.tr-index a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-height: 41px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--blanco);
+}
+
+.tr-index a span {
+  color: var(--gris-inactivo);
+}
+
+.tr-index a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- 02 · Intro ---------- */
+
+.tr-intro {
+  margin-top: 160px;
+}
+
+.tr-intro__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 48px 97px;
+  border-radius: var(--radius);
+  background: var(--gris-medio);
+}
+
+.tr-intro__text {
+  max-width: 540px;
+  margin-top: 44px;
+  font-size: clamp(14px, 11.8px + 0.57vw, 20px);
+  line-height: 1.55;
+  white-space: pre-line;
+  color: var(--texto);
+}
+
+/* ---------- 03 · El proceso ---------- */
+
+.tr-process {
+  margin-top: 120px;
+}
+
+.tr-process__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.tr-process__card::before {
+  content: '';
+  position: absolute;
+  inset: 0 50.55% 0 0;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.tr-process__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 48px 48px 48px;
+  border-radius: var(--radius);
+  background: rgb(233 234 237 / 0.75);
+}
+
+.tr-process__title {
+  margin-top: 4px;
+  font-size: clamp(34px, 31.1px + 0.57vw, 40px);
+  line-height: 57px;
+}
+
+.tr-process__step {
+  max-width: 540px;
+  animation: tr-in 0.6s ease-in-out;
+}
+
+.tr-process__num {
+  font-size: clamp(56px, 40.8px + 3.81vw, 96px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--gris-inactivo);
+}
+
+.tr-process__step h3 {
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 39px;
+  color: var(--tinta);
+}
+
+.tr-process__step p:last-child {
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--texto);
+}
+
+.tr-process__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: auto;
+  padding-top: 32px;
+}
+
+.tr-process__dots button {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--gris-inactivo);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gris-inactivo);
+  transition:
+    background-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+}
+
+.tr-process__dots button:hover {
+  border-color: var(--tinta);
+  color: var(--tinta);
+}
+
+.tr-process__dots button[aria-pressed='true'] {
+  border-color: var(--tinta);
+  background: var(--tinta);
+  color: var(--blanco);
+}
+
+.tr-process__images {
+  position: relative;
+}
+
+/* Las fotos siguientes esperan a la izquierda y entran por debajo del panel. */
+.tr-process__images [data-state='after'] {
+  transform: translateX(-205%);
+}
+
+.tr-process__images [data-state='before'] {
+  transform: translateX(105%);
+}
+
+.tr-process__mobile {
+  display: none;
+}
+
+/* ---------- 04 · Duración y sesiones ---------- */
+
+.tr-duration__panel {
+  display: flex;
+  flex-direction: column;
+  padding: 242px 48px 48px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.tr-duration__panel .tr-label {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.tr-duration__phrase {
+  margin-top: 11px;
+  font-size: clamp(34px, 28px + 1.52vw, 50px);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tr-duration__phrase .script {
+  font-size: var(--fs-seccion-script);
+  line-height: 52px;
+  letter-spacing: 0;
+}
+
+.tr-duration__rows {
+  max-width: 601px;
+  margin-top: 25px;
+}
+
+.tr-duration__rows div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 25px 0 21px;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.tr-duration__rows div:first-child {
+  padding-top: 0;
+}
+
+.tr-duration__rows div:last-child {
+  border-bottom: 0;
+}
+
+.tr-duration__rows dt {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tinta);
+}
+
+.tr-duration__rows dd {
+  font-size: 16px;
+  line-height: 25px;
+  text-align: right;
+  color: var(--texto);
+}
+
+/* ---------- 05 · Cuidados pre y post ---------- */
+
+#cuidados {
+  margin-top: 120px;
+}
+
+.tr-care {
+  display: grid;
+  grid-template-columns: 49.65% minmax(0, 1fr);
+  min-height: 640px;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.tr-care__picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 170px 40px 0 0;
+}
+
+.tr-care__words {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.tr-care__words button {
+  position: relative;
+  font-size: clamp(48px, 39px + 2.29vw, 72px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.03em;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+.tr-care__end {
+  font-family: var(--script);
+  color: var(--texto);
+}
+
+/* Óvalo alrededor de la palabra elegida. */
+.tr-care__words button::before {
+  content: '';
+  position: absolute;
+  inset: -21px -50%;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.tr-care__words button[aria-pressed='true'] {
+  color: var(--tinta);
+}
+
+.tr-care__words button[aria-pressed='true']::before {
+  opacity: 1;
+}
+
+.tr-care__end {
+  margin-top: 20px;
+  font-size: 64px;
+  line-height: 98px;
+}
+
+.tr-care__list {
+  padding: 110px 64px 48px 0;
+  animation: tr-in 0.6s ease-in-out;
+}
+
+.tr-care__title {
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  color: var(--tinta);
+}
+
+.tr-care__list ol,
+.tr-cond__list {
+  margin-top: 40px;
+  border-top: 1px solid var(--gris-medio);
+}
+
+.tr-care__list li {
+  display: flex;
+  gap: 52px;
+  padding: 22px 0 20px;
+  border-bottom: 1px solid var(--gris-medio);
+  font-size: clamp(14px, 12.5px + 0.38vw, 18px);
+  line-height: 1.56;
+  color: var(--tinta);
+}
+
+.tr-care__list li span,
+.tr-cond__list li span {
+  flex: none;
+  min-width: 14px;
+  padding-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--gris-inactivo);
+}
+
+/* ---------- 06 · ¿Es para tu piel? ---------- */
+
+#para-tu-piel {
+  margin-top: 120px;
+}
+
+.tr-cond {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 690px;
+  padding: 90px 24px 48px;
+  border-radius: var(--radius);
+  background: var(--gris-medio);
+  text-align: center;
+}
+
+.tr-cond__title {
+  font-size: var(--fs-titulo);
+  line-height: 70px;
+}
+
+.tr-cond__intro {
+  max-width: 760px;
+  margin-top: 40px;
+  font-size: clamp(14px, 12.5px + 0.38vw, 18px);
+  line-height: 1.56;
+  color: var(--texto);
+}
+
+.tr-cond__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 560px));
+  column-gap: 40px;
+  width: 100%;
+  max-width: 1160px;
+  margin-top: 32px;
+  border-top: 0;
+  text-align: left;
+}
+
+.tr-cond__list li {
+  display: flex;
+  gap: 26px;
+  padding: 20px 0 18px;
+  border-top: 1px solid var(--gris-inactivo);
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--tinta);
+}
+
+.tr-cond__list li:nth-last-child(-n + 2) {
+  border-bottom: 1px solid var(--gris-inactivo);
+}
+
+.tr-cond__list li span {
+  padding-top: 2px;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--texto);
+}
+
+.tr-cond__outro {
+  max-width: 700px;
+  margin-top: 32px;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--texto);
+}
+
+.tr-cond .btn--link {
+  margin-top: 24px;
+}
+
+/* ---------- 07 · Activos clave ---------- */
+
+.tr-actives {
+  margin-top: 120px;
+}
+
+.tr-actives__card {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  min-height: 760px;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.tr-actives__card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 50.55%;
+  border-radius: var(--radius);
+  background: var(--gris-panel);
+}
+
+.tr-actives__images {
+  position: relative;
+}
+
+/* Las fotos siguientes esperan a la derecha y entran por debajo del panel. */
+.tr-actives__images [data-state='after'] {
+  transform: translateX(205%);
+}
+
+.tr-actives__images [data-state='before'] {
+  transform: translateX(-105%);
+}
+
+.tr-actives__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 150px 48px 48px;
+  border-radius: var(--radius);
+  background: rgb(233 234 237 / 0.75);
+  text-align: center;
+}
+
+.tr-actives__words {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.tr-actives__words button {
+  position: relative;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: -0.03em;
+  color: var(--gris-inactivo);
+  transition: color 0.25s var(--ease);
+}
+
+.tr-actives__words button::before {
+  content: '';
+  position: absolute;
+  inset: -19px -40px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.tr-actives__words button[aria-pressed='true'] {
+  color: var(--tinta);
+}
+
+.tr-actives__words button[aria-pressed='true']::before {
+  opacity: 1;
+}
+
+.tr-actives__desc {
+  max-width: 440px;
+  min-height: 52px;
+  margin-top: 32px;
+  font-size: 17px;
+  line-height: 26px;
+  color: var(--texto);
+  animation: tr-in 0.6s ease-in-out;
+}
+
+.tr-actives__note {
+  max-width: 480px;
+  margin-top: 83px;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--gris-inactivo);
+}
+
+.tr-actives__mobile {
+  display: none;
+}
+
+/* ---------- 08 · Testimonio ---------- */
+
+.tr-quotes {
+  margin-top: 120px;
+}
+
+.tr-quotes__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 540px;
+  padding: 160px 24px 48px;
+  border-radius: var(--radius);
+  background: var(--gris-medio);
+  text-align: center;
+}
+
+.tr-quotes__desktop {
+  max-width: 1000px;
+  animation: fade 0.5s var(--ease);
+}
+
+.tr-quotes__text {
+  font-size: clamp(28px, 23.5px + 1.14vw, 40px);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--tinta);
+}
+
+.tr-quotes__text .script {
+  font-size: 76px;
+  line-height: 61px;
+  letter-spacing: 0;
+}
+
+.tr-quotes__desktop figcaption,
+.tr-quotes__author {
+  margin-top: 27px;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.tr-quotes__dots {
+  display: flex;
+  margin-top: 40px;
+}
+
+.tr-quotes__dots button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.tr-quotes__dots button::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--tinta);
+  border-radius: 50%;
+}
+
+.tr-quotes__dots button[aria-pressed='true']::before {
+  background: var(--tinta);
+}
+
+.tr-quotes__mobile {
+  display: none;
+}
+
+/* ---------- 09 · Preguntas frecuentes ---------- */
+
+.tr-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 760px);
+  gap: 32px;
+  align-items: start;
+  padding-top: 120px;
+  padding-bottom: 230px;
+}
+
+.tr-faq__title {
+  margin-left: 31px;
+  font-size: var(--fs-titulo);
+  font-weight: 500;
+  line-height: 70px;
+  letter-spacing: -0.03em;
+  white-space: pre-line;
+  color: var(--tinta);
+}
+
+.tr-faq__title .script {
+  font-size: var(--fs-seccion-script);
+  letter-spacing: 0;
+}
+
+.tr-faq .accordion {
+  margin-top: 12px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1100px) {
+  .tr-cond__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tr-cond__list li:nth-last-child(2) {
+    border-bottom: 0;
+  }
+}
+
+/* ---------- Celular (frame "Celular — Tratamiento anti-age", 390) ---------- */
+
+@media (max-width: 760px) {
+  .tr-label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .tr-title,
+  .tr-cond__title,
+  .tr-faq__title {
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .tr-title .script,
+  .tr-cond__title .script,
+  .tr-faq__title .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  /* Dos líneas: la primera toma el alto de la manuscrita, como en Figma. */
+  .tr-intro .tr-title,
+  .tr-faq__title {
+    padding-top: 17px;
+  }
+
+  .tr-hero,
+  .tr-split,
+  #cuidados,
+  #para-tu-piel,
+  .tr-quotes {
+    padding-inline: 0;
+  }
+
+  /* Hero: foto de 440 arriba (debajo de la navegación) y texto. */
+  .tr-hero {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: -20px;
+  }
+
+  .tr-hero__img {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 390 / 440;
+    border-radius: 0;
+  }
+
+  .tr-hero__panel {
+    align-items: stretch;
+    padding: 32px 24px 48px;
+  }
+
+  .tr-hero__crumbs {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .tr-hero__title {
+    margin-top: 14px;
+    padding-top: 17px;
+    font-size: 34px;
+    line-height: 27px;
+    white-space: normal;
+  }
+
+  .tr-hero__title .script {
+    display: block;
+    margin-top: 1px;
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .tr-hero__tagline {
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--tinta);
+  }
+
+  .tr-hero__desc {
+    max-width: none;
+    margin-top: 14px;
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .tr-hero__facts {
+    gap: 12px;
+    margin-top: 14px;
+    padding: 8px 0;
+  }
+
+  .tr-hero__facts div,
+  .tr-hero__facts div:first-child {
+    flex: 1;
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .tr-hero__facts dd {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .tr-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    margin-top: 18px;
+  }
+
+  .tr-hero__actions .btn--link {
+    align-self: center;
+    min-height: 32px;
+  }
+
+  /* Índice: píldoras que se deslizan. */
+  .tr-index ul {
+    display: flex;
+    gap: 8px;
+    padding: 14px 24px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tr-index li {
+    flex: none;
+  }
+
+  .tr-index a {
+    gap: 6px;
+    min-height: 35px;
+    padding: 0 12px;
+    border: 1px solid rgb(255 255 255 / 0.25);
+    border-radius: var(--pill);
+    font-size: 11px;
+    line-height: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Bloques con foto arriba y texto abajo. */
+  .tr-split {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    margin-top: 0;
+    padding-bottom: 56px;
+  }
+
+  .tr-split__img,
+  .tr-split--reverse .tr-split__img {
+    order: 0;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 390 / 420;
+    border-radius: 0;
+  }
+
+  .tr-intro__panel,
+  .tr-duration__panel {
+    justify-content: flex-start;
+    padding: 32px 24px 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .tr-intro__text {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .tr-process {
+    margin-top: 0;
+    padding: 56px 0;
+  }
+
+  .tr-process__desktop {
+    display: none;
+  }
+
+  .tr-process__mobile {
+    display: grid;
+    gap: 20px;
+  }
+
+  .tr-process__mobile .tr-process__title {
+    margin-top: 8px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .tr-process__mobile .tr-process__title .script {
+    line-height: 42px;
+  }
+
+  .tr-cards {
+    gap: 12px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .tr-cards__item {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    width: 300px;
+  }
+
+  .tr-cards__item img {
+    width: 100%;
+    aspect-ratio: 300 / 340;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--gris-panel);
+  }
+
+  .tr-cards__item .tr-process__num {
+    font-size: 56px;
+    line-height: 45px;
+    letter-spacing: -0.03em;
+  }
+
+  .tr-cards__item h3 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--tinta);
+  }
+
+  .tr-cards__item p:last-child {
+    font-size: 15px;
+    line-height: 23px;
+    color: var(--texto);
+  }
+
+  .tr-duration .tr-split__img {
+    aspect-ratio: 390 / 380;
+  }
+
+  .tr-duration__panel .tr-label {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .tr-duration__phrase {
+    margin-top: 16px;
+    font-size: 34px;
+    line-height: 27px;
+  }
+
+  .tr-duration__phrase .script {
+    font-size: 76px;
+    line-height: 61px;
+  }
+
+  .tr-duration__rows {
+    max-width: none;
+    margin-top: 32px;
+  }
+
+  .tr-duration__rows div,
+  .tr-duration__rows div:first-child {
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+
+  .tr-duration__rows dt {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .tr-duration__rows dd {
+    font-size: 15px;
+    line-height: 23px;
+    text-align: left;
+  }
+
+  /* Cuidados: palabras en fila y lista debajo. */
+  #cuidados,
+  #para-tu-piel {
+    margin-top: 0;
+  }
+
+  .tr-care {
+    display: block;
+    min-height: 0;
+    padding: 56px 24px;
+    border-radius: 0;
+  }
+
+  .tr-care__picker {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 16px 16px;
+    padding: 0;
+  }
+
+  .tr-care__picker .tr-label {
+    width: 100%;
+  }
+
+  .tr-care__words {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+  }
+
+  .tr-care__words button {
+    font-size: 48px;
+    line-height: 38px;
+  }
+
+  .tr-care__words button::before {
+    display: none;
+  }
+
+  .tr-care__end {
+    margin: 0;
+    font-size: 56px;
+    line-height: 45px;
+  }
+
+  .tr-care__list {
+    padding: 16px 0 0;
+  }
+
+  .tr-care__title {
+    font-size: 28px;
+    line-height: 27px;
+  }
+
+  .tr-care__list ol {
+    margin-top: 16px;
+    border-top: 0;
+  }
+
+  .tr-care__list li {
+    gap: 16px;
+    padding: 16px 0;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .tr-care__list li span,
+  .tr-cond__list li span {
+    padding-top: 2px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+  }
+
+  .tr-cond {
+    align-items: flex-start;
+    min-height: 0;
+    padding: 56px 24px;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  .tr-cond__title {
+    padding-top: 10px;
+  }
+
+  .tr-cond__intro {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .tr-cond__list {
+    margin-top: 16px;
+  }
+
+  .tr-cond__list li,
+  .tr-cond__list li:nth-last-child(-n + 2) {
+    gap: 16px;
+    padding: 14px 0;
+    border-top: 0;
+    border-bottom: 1px solid var(--gris-medio);
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .tr-cond__outro {
+    margin-top: 16px;
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .tr-cond .btn--link {
+    min-height: 32px;
+    margin-top: 16px;
+  }
+
+  .tr-actives {
+    margin-top: 0;
+    padding: 56px 0;
+  }
+
+  .tr-actives__desktop {
+    display: none;
+  }
+
+  .tr-actives__mobile {
+    display: grid;
+    gap: 20px;
+  }
+
+  .tr-cards--actives .tr-cards__item {
+    width: 280px;
+  }
+
+  .tr-cards--actives .tr-cards__item img {
+    aspect-ratio: 280 / 320;
+  }
+
+  .tr-cards__item .tr-actives__word {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    color: var(--tinta);
+  }
+
+  .tr-actives__mobile .tr-actives__note {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--tinta);
+  }
+
+  .tr-quotes {
+    margin-top: 0;
+  }
+
+  .tr-quotes__card {
+    display: block;
+    min-height: 0;
+    padding: 56px 0;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  .tr-quotes__desktop,
+  .tr-quotes__dots {
+    display: none;
+  }
+
+  .tr-quotes__mobile {
+    display: flex;
+    gap: 16px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .tr-quotes__mobile li {
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    width: 320px;
+  }
+
+  .tr-quotes__text {
+    font-size: 28px;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  }
+
+  .tr-quotes__author {
+    margin: 18px 0 0;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  .tr-faq {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 56px;
+  }
+
+  .tr-faq__title {
+    margin-left: 0;
+  }
+
+  .tr-faq .accordion {
+    margin-top: 0;
+  }
+}
