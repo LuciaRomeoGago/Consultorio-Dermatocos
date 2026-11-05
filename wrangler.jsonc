@@ -1,0 +1,9 @@
+// Publicación en Cloudflare (Workers con archivos estáticos): sirve dist/ y manda cualquier ruta a index.html.
+{
+  "name": "consultorio-dermatocos",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
